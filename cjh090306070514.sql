@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2025 at 02:52 PM
+-- Generation Time: Dec 11, 2025 at 02:25 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -40,8 +40,8 @@ CREATE TABLE `kelas` (
 --
 
 CREATE TABLE `maklumat_pengundian` (
-  `IDPengguna` int(11) NOT NULL,
-  `IDPermainan` varchar(2) DEFAULT NULL,
+  `IDPengguna` varchar(12) NOT NULL,
+  `IDPermainan` varchar(2) NOT NULL,
   `Tarikh` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -52,9 +52,9 @@ CREATE TABLE `maklumat_pengundian` (
 --
 
 CREATE TABLE `pengundi` (
-  `IDPengguna` int(11) NOT NULL,
+  `IDPengguna` varchar(12) NOT NULL,
   `Nama` varchar(255) NOT NULL,
-  `IDKelas` varchar(2) DEFAULT NULL
+  `IDKelas` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -83,6 +83,7 @@ ALTER TABLE `kelas`
 --
 ALTER TABLE `maklumat_pengundian`
   ADD PRIMARY KEY (`IDPengguna`),
+  ADD UNIQUE KEY `uq_IDPengguna` (`IDPengguna`),
   ADD KEY `IDPermainan` (`IDPermainan`);
 
 --
