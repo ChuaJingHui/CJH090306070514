@@ -27,6 +27,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `kelas`
 --
+CREATE DATABASE CJH090306070514;
+USE CJH090306070514;
 
 CREATE TABLE `kelas` (
   `IDKelas` varchar(3) NOT NULL,
