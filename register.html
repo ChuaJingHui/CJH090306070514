@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pendaftaran</title>
+        <link rel="stylesheet" href="styles.css">
+        
+    </head>
+    <body>
+      <nav class="nav">
+        <div class="navTop">
+          <p><h1>SISTEM PENGUNDIAN PERMAINAN KEGEMARAN REMAJA</p></h1>
+        </div>
+
+        
+        
+      </nav>
+
+      <center>
+        <h1>Pendaftaran</h1>
+      
+
+      <form action="data.php" method="get">
+        <table>
+            <tr>
+              <td colspan="3"><input type="text" id="fIC" name="fIC" placeholder="IDPengguna(No.KP)" class="user" required></td>
+            </tr>
+            <tr>
+              <td colspan="3"><input type="text" id="fname" name="fname" placeholder="Nama" class="user" required></td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <input list="kelas" id="fkelas" name="fkelas" placeholder="Kelas" class="user">
+                <datalist id="fkelas">
+                    <option value="4S1">
+                    <option value="4S3">
+                    <option value="4S9">
+                    <option value="4T2">
+                    <option value="4C2">
+                    <option value="4C3">
+                    <option value="4CL">
+                    <option value="4SL">
+                </datalist>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3"><input type="text" id="fpassword" name="fpassword" placeholder="Kata Laluan" class="user" required></td>
+            </tr>
+            <tr>
+                <td></td>
+              <td><input type="submit" value="Sahkan" class="btn"></td>
+              <td></td>
+            </tr>
+          </table>
+      </form>
+      </center>
+      
+      <footer>
+        <span class="copyright">Hak Cipta@Persatuan Penyelidikan Dan Kajian Remaja</span>
+      </footer>
+    </body>
+</html>
