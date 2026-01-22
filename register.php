@@ -17,46 +17,38 @@
 
       <center>
         <h1>Pendaftaran</h1>
-      
+      <!--Key in daftar maklumat-->
+      <form onsubmit="return validateIC()" action="" method="">
 
-      <form onsubmit="return validateForm()" action="" method="">
-        <select name='kelas' required>
-          <?php
-              require('config.php');
-              //Untuk memaparkan query kelas
-              $sqlSelectKelas="SELECT * FROM kelas";
-              $data=$con->query($sqlSelectKelas);
-
-              print"<option>Pilih Kelas</option>";
-              if($data->num_rows>0){
-                while($rows=$data->fetch_assoc()){
-                    //Fetch a result row as an associative array:
-                        echo "<option value='".$row['IDKelas']."'>"
-                      .$row['kelas']."</option>";
-                  }
-              }
-          ?>
-          </select>
-        <table>
+        <table class="register">
             <tr>
-              <td colspan="3"><input type="text" id="fIC" name="fIC" placeholder="IDPengguna(No.KP)" class="user" required></td>
+              <td colspan="3"><input type="text" id="ic" name="ic" placeholder="IDPengguna(No.KP)" class="user" required></td>
+              <div id="icTooltip" class="tooltip">
+                    IC number must be exactly 12 digits (number only)
+              </div>
             </tr>
             <tr>
               <td colspan="3"><input type="text" id="fname" name="fname" placeholder="Nama" class="user" required></td>
             </tr>
             <tr>
               <td colspan="3">
-                <input list="kelas" id="fkelas" name="fkelas" placeholder="Kelas" class="user">
-                <!-- <datalist id="fkelas">
-                    <option value="4S1">
-                    <option value="4S3">
-                    <option value="4S9">
-                    <option value="4T2">
-                    <option value="4C2">
-                    <option value="4C3">
-                    <option value="4CL">
-                    <option value="4SL">
-                </datalist> -->
+                <select name='Kelas' required>
+                 <?php
+                    require('config.php');
+                    //Untuk memaparkan query kelas
+                    $sqlSelectKelas="SELECT * FROM Kelas";
+                    $data=$con->query($sqlSelectKelas);
+
+                    print"<option>Pilih Kelas</option>";
+                    if($data->num_rows>0){
+                      while($row = $data->fetch_assoc()){
+                          //Fetch a result row as an associative array:
+                              echo "<option value='".$row['IDKelas']."'>"
+                            .$row['Kelas']."</option>";
+                          }
+                    }
+                ?>
+                </select>
               </td>
             </tr>
             <tr>
@@ -65,24 +57,26 @@
             <tr>
               <td colspan="3"><a href="login.html" class="register">Sudah Daftar?</a></td>
             </tr>
+
+            <!--daftar botton after key in maklumat-->
             <tr>
               <td style="text-align: right;padding-right:20%;"><input type="submit" value="Sahkan" class="btn"></td>
             </tr>
-          </table>
+        </table>
       </form>
       </center>
 
       <script>
       function validateIC(){
-        const ic = document.getElementById("fIC");
+        const ic = document.getElementById("ic");
         const tooltip = document.getElementById("icTooltip");
 
         //Remove non-numeric characters
         ic.value = ic.value.replace(/\D/g,'');
 
-        if(ic.value.length !== 12){
+        if(ic.value.length!==12){
           ic.classlist.add("invalid");
-          tooltip.style.display = "block";
+          tooltip.style.display="block";
           return false;
         }else{
           ic.classlist.remove("invalid");
@@ -90,6 +84,9 @@
           return true;
         }
       }
+
+      document.getElementById("ic").addEventListener("input", validateIC);
+      
       </script>
     
       

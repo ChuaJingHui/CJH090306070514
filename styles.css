@@ -1,3 +1,7 @@
+body,button,select,input::placeholder{
+        font-family: "Times New Roman", sans-serif;
+    }
+
 nav {
   background-color: #ffffff;
   padding: 0.5px;
@@ -7,6 +11,7 @@ nav {
   left: 0;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .navTop {
@@ -36,6 +41,22 @@ table {
     font-size: 20px;
 }
 
+/*Tooltip style*/
+    .tooltip{
+        color:#fff;
+        background-color:red;
+        padding:5px 8px;
+        font-size:12px;
+        margin-top:4px;
+        display:none;
+        border-radius: 4px;
+    }
+
+
+    .invalid{
+        border:2px solid red;
+    }
+
 .btn{
     width:auto;
     height:auto;
@@ -49,5 +70,5 @@ footer{
     font-weight:bold;
     flex: 2;
     justify-content: space-between;
-     padding: 50px;
+    padding: 50px;
 }
