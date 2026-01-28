@@ -22,11 +22,14 @@
 
         <table class="register">
             <tr>
-              <td colspan="3"><input type="text" id="ic" name="ic" placeholder="IDPengguna(No.KP)" class="user" required></td>
-              <div id="icTooltip" class="tooltip">
-                    IC number must be exactly 12 digits (number only)
-              </div>
-            </tr>
+  <td colspan="3">
+    <input type="text" id="ic" name="ic" placeholder="IDPengguna(No.KP)" class="user" required>
+    <!-- Tooltip moved inside the TD -->
+    <div id="icTooltip" class="tooltip" style="display:none; color:red;">
+        IC number must be exactly 12 digits (number only)
+    </div>
+  </td>
+</tr>
             <tr>
               <td colspan="3"><input type="text" id="fname" name="fname" placeholder="Nama" class="user" required></td>
             </tr>
@@ -68,22 +71,20 @@
 
       <script>
       function validateIC(){
-        const ic = document.getElementById("ic");
-        const tooltip = document.getElementById("icTooltip");
+  const ic = document.getElementById("ic");
+  const tooltip = document.getElementById("icTooltip");
 
-        //Remove non-numeric characters
-        ic.value = ic.value.replace(/\D/g,'');
-
-        if(ic.value.length!==12){
-          ic.classlist.add("invalid");
-          tooltip.style.display="block";
-          return false;
-        }else{
-          ic.classlist.remove("invalid");
-          tooltip.style.display = "none";
-          return true;
-        }
-      }
+  // Use capital L in classList
+  if(ic.value.length !== 12){
+    ic.classList.add("invalid"); 
+    tooltip.style.display = "block";
+    return false;
+  } else {
+    ic.classList.remove("invalid");
+    tooltip.style.display = "none";
+    return true;
+  }
+}
 
       document.getElementById("ic").addEventListener("input", validateIC);
       
