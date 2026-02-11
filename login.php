@@ -7,16 +7,12 @@
     <body>
       <nav class="nav">
         <div class="navTop">
-          <p><h1>SISTEM PENGUNDIAN PERMAINAN KEGEMARAN REMAJA</p></h1>
+          <h1>SISTEM PENGUNDIAN PERMAINAN KEGEMARAN REMAJA</h1>
         </div>
-        <div class="navItem">
-          <table class="navTable">
-            <tr>
-              <td><a class="navbtn" href="login.html">Login</a></td>
-              <td><a class="navbtn" href="register.php">Daftar</a></td>
-              <td><a class="navbtn" href=laporan.html">Laporan</a></td>
-            </tr>
-          </table>
+        <div class="navButtons">
+          <a href="login.php" class="nav-btn">Log Masuk</a>
+          <a href="admin.php" class="nav-btn">Laporan</a>
+          <a href="login.php" class="nav-btn">Keluar</a>
         </div>
  
       </nav>
