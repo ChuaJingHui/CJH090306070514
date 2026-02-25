@@ -154,12 +154,15 @@ table {
     width: 50%; 
     border: 2px solid black; /* Ini yang buat border pada 'Pilih' site */
     text-align: center;
+    padding: 5px 10px; /* Top/Bottom: 5px, Left/Right: 10px */
 }
+
+
 
 /* 3. SEMBUNYIKAN border pada baris terakhir (Butang Sahkan) */
 .undi tr:last-child td {
     border: none !important;
-    padding-top: 30px;
+    padding:20px;
 }
 
 .undi img { 
@@ -169,7 +172,6 @@ table {
     display: block; 
     margin: 10px auto; 
 }
-
 
 .btn{
     width:auto;
@@ -183,27 +185,8 @@ form {
     flex: 1;
 }
 
-.laporan {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    text-align: center;
-}
 
-/* KAWAL SAIZ IMEJ DI SINI */
-.laporan img {
-    width: 300px;         /* Tetapkan lebar tetap */
-    height: 200px;        /* Tetapkan tinggi tetap */
-    object-fit: cover;    /* Supaya gambar tidak terpenyet */
-    border-radius: 10px;  /* Optional: nampak lebih cantik */
-    display: block;
-    margin: 10px auto;
-}
-
-.laporan td {
-    padding: 20px;
-    border: 2px solid #080808; /* Tambah border nipis untuk nampak seperti laporan */
-}
+/* Footer */
 footer{
     text-align: center;
     font-size: 25px;
