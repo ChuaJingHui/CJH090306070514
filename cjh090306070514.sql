@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2025 at 01:34 PM
+-- Generation Time: Feb 25, 2026 at 10:03 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `kelas`
 --
+
 CREATE DATABASE CJH090306070514;
 USE CJH090306070514;
 
@@ -76,6 +77,24 @@ INSERT INTO `maklumat_pengundian` (`IDPengguna`, `IDPermainan`, `Tarikh`) VALUES
 ('090930070716', 'U01', '2025-08-19 07:35:12'),
 ('091212070923', 'U02', '2025-08-21 18:55:07'),
 ('091218076989', 'U01', '2025-08-19 08:10:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengguna`
+--
+
+CREATE TABLE `pengguna` (
+  `IDPengguna` varchar(12) NOT NULL,
+  `KataLaluan` varchar(16) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pengguna`
+--
+
+INSERT INTO `pengguna` (`IDPengguna`, `KataLaluan`) VALUES
+('admin', '123');
 
 -- --------------------------------------------------------
 
@@ -141,6 +160,12 @@ ALTER TABLE `maklumat_pengundian`
   ADD PRIMARY KEY (`IDPengguna`),
   ADD UNIQUE KEY `uq_IDPengguna` (`IDPengguna`),
   ADD KEY `IDPermainan` (`IDPermainan`);
+
+--
+-- Indexes for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  ADD PRIMARY KEY (`IDPengguna`);
 
 --
 -- Indexes for table `pengundi`
