@@ -45,7 +45,7 @@
             </table>
         </form>
       <footer>
-        <span class="copyright">Hak Cipta@Persatuan Penyelidikan Dan Kajian Remaja</span>
+        <span class="copyright">Disediakan oleh Chua Jing Hui</span>
       </footer>
     </body>
 </html>

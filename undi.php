@@ -11,9 +11,9 @@
           <h1>SISTEM PENGUNDIAN PERMAINAN KEGEMARAN REMAJA</h1>
         </div>
         <div class="navButtons">
-          <a href="login.php" class="nav-btn">Log Masuk</a>
-          <a href="admin.php" class="nav-btn">Laporan</a>
-          <a href="login.php" class="nav-btn">Keluar</a>
+          <a href="login.php" class="nav-btn">LOG MASUK</a>
+          <a href="admin.php" class="nav-btn">LAPORAN</a>
+          <a href="login.php" class="nav-btn">KELUAR</a>
         </div>
       </nav>
 
@@ -50,7 +50,7 @@
             </table>
         </form>
       <footer>
-        <span class="copyright">Hak Cipta@Persatuan Penyelidikan Dan Kajian Remaja</span>
+        <span class="copyright">Disediakan oleh Chua Jing Hui</span>
       </footer>
     </body>
 </html>
