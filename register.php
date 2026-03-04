@@ -12,7 +12,7 @@
         </div>
         <div class="navButtons">
           <a href="login.php" class="nav-btn">LOG MASUK</a>
-          <a href="admin.php" class="nav-btn">LAPORAN</a>
+          <a href="laporan.php" class="nav-btn">LAPORAN</a>
           <a href="login.php" class="nav-btn">KELUAR</a>
         </div>
       </nav>
@@ -20,18 +20,18 @@
       <center>
         <h1>Pendaftaran</h1>
       <!--Key in daftar maklumat-->
-      <form onsubmit="return validateIC()" action="" method="">
+      <form onsubmit="return validateIC()" action="ProsesPendaftaran.php" method="GET">
 
         <table class="register">
             <tr>
-  <td colspan="3">
-    <input type="text" id="ic" name="ic" placeholder="IDPengguna(No.KP)" class="user" required>
-    <!-- Tooltip moved inside the TD -->
-    <div id="icTooltip" class="tooltip" style="display:none; color:red;">
-        IC number must be exactly 12 digits (number only)
-    </div>
-  </td>
-</tr>
+              <td colspan="3">
+                <input type="text" id="ic" name="ic" placeholder="IDPengguna(No.KP)" class="user" required>
+                  <!-- Tooltip moved inside the TD -->
+                  <div id="icTooltip" class="tooltip" style="display:none;">
+                      IC number must be exactly 12 digits (number only)
+                  </div>
+                </td>
+            </tr>
             <tr>
               <td colspan="3"><input type="text" id="fname" name="fname" placeholder="Nama" class="user" required></td>
             </tr>

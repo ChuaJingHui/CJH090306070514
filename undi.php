@@ -12,7 +12,7 @@
         </div>
         <div class="navButtons">
           <a href="login.php" class="nav-btn">LOG MASUK</a>
-          <a href="admin.php" class="nav-btn">LAPORAN</a>
+          <a href="laporan.php" class="nav-btn">LAPORAN</a>
           <a href="login.php" class="nav-btn">KELUAR</a>
         </div>
       </nav>
