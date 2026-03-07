@@ -21,7 +21,7 @@
         <h1>LOG MASUK</h1>
       
 
-      <form action="laporan.php" method="POST">
+      <form action="login.php" method="POST">
         <table>
             <tr>
               <td colspan="3"><input type="text" id="fIC" name="fIC" placeholder="IDPengguna" class="user" required></td>
@@ -58,7 +58,7 @@
     if($username==="admin" && $password==="123")
     {
       echo"<script>alert('Anda telah berjaya log masuk.');</script>";
-      echo"<script>windwo.location.replace('laporan.php')</script>";
+      echo"<script>window.location.replace('laporan.php')</script>";
     }
     else{
       //Melakukan query untuk mengesahkan akaun pengguna
@@ -74,11 +74,12 @@
         echo "<script>window.location.replace('undi.php')</script>";
       }
       else{
-        echo "<script>alert('Harap Maaf.Username atau Password anda salah');
+        echo "<script>alert('Harap Maaf.Username atau Kata Laluan anda salah');
         windows.location.replace('login.php');</script>";
       }
     }
     }
 
 ?>
+
 
