@@ -52,8 +52,8 @@
     if(isset($_GET['login'])){
 
     //Mengumpukkan pemboleh ubah untuk menyimpan data daripada pengguna
-    $username=$_GET['username'];
-    $password=$_GET['password'];
+    $username=$_GET['fIC'];
+    $password=$_GET['fpassword'];
 
     if($username==="admin" && $password==="123")
     {
@@ -62,7 +62,7 @@
     }
     else{
       //Melakukan query untuk mengesahkan akaun pengguna
-      $rekod=mysqli_query($con,"SELECT* FROM 'Pengguna' WHERE IDPengguna='$username' AND KataLaluan='$password'");
+      $rekod=mysqli_query($con,"SELECT * FROM 'Pengguna' WHERE IDPengguna='$username' AND KataLaluan='$password'");
 
       //Hasil carian rekod dari Pangkalan Data
       $hasilCarian=mysqli_num_rows($rekod);
@@ -75,11 +75,12 @@
       }
       else{
         echo "<script>alert('Harap Maaf.Username atau Kata Laluan anda salah');
-        windows.location.replace('login.php');</script>";
+        window.location.replace('login.php');</script>";
       }
     }
     }
 
 ?>
+
 
 
