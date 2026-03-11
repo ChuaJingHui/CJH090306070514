@@ -1,7 +1,16 @@
 html{
     height:100%;
 }
-body,button,select,input::placeholder{
+
+body {
+    font-family: "Times New Roman", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body always takes up the full screen height */
+    margin: 0; /* Removes default browser margins so you don't get unwanted scrollbars */
+}
+
+button,select,input::placeholder{
         font-family: "Times New Roman", sans-serif;
         display: flex;
         flex-direction: column;
@@ -99,7 +108,7 @@ nav {
 }
 /* Table */
 table {
-    width: 100%;
+    width: 60%;
     height:200px;
     margin-bottom: 30px;
     border-radius: 8px ;
@@ -114,16 +123,72 @@ table {
 }
 
 
-.user{
-    width:60%;
-    height:20px;
-    padding:10px;
-    margin: auto;
+.user {
+    width: 100%; /* Makes all inputs and selects fill their container */
+    height: 40px; /* Gives them a consistent height */
+    padding: 10px;
+    box-sizing: border-box; /* Ensures padding doesn't add to the total width */
+    margin: 5px 0; /* A little breathing room */
+    font-family: "Times New Roman", sans-serif;
+    font-size: 16px;
 }
 
+select.user {
+    /* 1. Hide the default, stubborn browser arrow */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* 2. Add our own clean, custom arrow */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 18px; /* Size of the new arrow */
+
+    /* 3. THIS IS THE MAGIC LINE: Move the arrow to the left! */
+    /* "calc(100% - 15px)" means place it 15px away from the right edge */
+    background-position: calc(100% - 15px) center; 
+    
+    /* 4. Make sure text doesn't type over the new arrow */
+    padding-right: 40px; 
+}
 
 .register{
     font-size: 20px;
+}
+
+
+.kemaskini:thead {
+    background-color: #124c8b; /* Primary color for headers */
+    color: white;
+}
+
+.kemaskini{
+    width: 85%;
+    border-collapse: collapse; /* Collapse borders for a clean look */
+    margin-bottom: 30px;
+    box-shadow: 0 0 10px rgba(36, 173, 236, 0.05); /* Soft shadow for tables */
+    border-radius: 8px ;
+    overflow: hidden; /* Ensures rounded corners apply to content */
+    text-align: center;
+    margin: auto;
+}
+
+.kemaskini:th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid rgb(12, 80, 126); /* Light border between rows */
+}
+
+.kemaskini:tbody tr:nth-child(odd) {
+    background-color: #a8bccf; /* Zebra striping for readability */
+}
+
+.kemaskini:tbody tr:nth-child(even) {
+    background-color: #cde4fc; /* Zebra striping for readability */
+}
+
+.kemaskini:tbody tr:hover {
+    background-color: #648ac4; /* Highlight row on hover */
 }
 
 /*Tooltip style*/
@@ -141,6 +206,35 @@ table {
     .invalid{
         border:2px solid rgb(255, 255, 255);
     }
+
+    /* Container to hold the input and the icon */
+.password-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Adjust the input to make room for the icon on the right */
+.password-container .user {
+    padding-right: 40px; /* Leaves space so text doesn't hide behind the eye */
+    margin: 5px 0;
+}
+
+/* Position the eye icon */
+.eye-icon {
+    position: absolute;
+    right: 15px; /* Distance from the right edge */
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none; /* Prevents accidentally highlighting the icon */
+    color: #555;
+}
+
+/* Add a slight hover effect to the icon */
+.eye-icon:hover {
+    transform: scale(1.1);
+}
 
 /*Undi*/
 /* 1. Bahagian Jadual */
@@ -192,14 +286,13 @@ form {
 
 
 /* Footer */
-footer{
+footer {
     background-color: #81d6f0;
     text-align: center;
     font-size: 25px;
-    font-weight:bold;
-    flex: 1;
+    font-weight: bold;
     padding: 20px 0;
-    width:100%;
-    margin-top:2%;
+    width: 100%;
     height: auto;
+    margin-top: auto; /* This is the magic line that pushes it to the bottom */
 }

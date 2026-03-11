@@ -12,7 +12,7 @@
         </div>
         <div class="navButtons">
           <a href="login.php" class="nav-btn">LOG MASUK</a>
-          <a href="laporanPengundi.php" class="nav-btn">KEPUTUSAN</a>
+          <a href="laporan.php" class="nav-btn">LAPORAN</a>
           <a href="login.php" class="nav-btn">KELUAR</a>
         </div>
       </nav>
@@ -39,7 +39,7 @@
                 </tr>
             <tr>
                     <td colspan="2" style="text-align: center;">
-                        <input type="submit" value="CETAK" class="btn">
+                        <button onclick="window.print()" class="btn">CETAK</button>
                     </td>
                 </tr>
             </table>

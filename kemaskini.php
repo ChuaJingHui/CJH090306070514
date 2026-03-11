@@ -19,8 +19,26 @@
 
       <center>
         <h1>KEMASKINI</h1>
-        
+         <section class="kemaskini">
+          <table>
+            <thead>
+              <tr>
+                <th>IDPengguna</th>
+                <th>Nama</th>
+                <th>Kelas</th>
+                <th colspan="2">Tindakan</th>
+              </tr>
+            </thead>
+            <tbody id="maklumat">
+              <!-- Filled by fetch -->
+            </tbody>
+          </table>
+        </section>
 
+  <script>
+    
+    
+</script>
 
       </center>
       

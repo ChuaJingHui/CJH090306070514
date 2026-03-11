@@ -44,7 +44,7 @@
                 </tr>
             <tr>
                     <td colspan="2" style="text-align: center;">
-                        <input type="submit" value="Sahkan" class="btn">
+                        <input type="submit" name="undi" value="Sahkan" class="btn">
                     </td>
                 </tr>
             </table>
@@ -54,3 +54,29 @@
       </footer>
     </body>
 </html>
+<?php
+    //Menghubung ke pangkalan data
+    require('config.php');
+
+    if(isset($_GET['undi'])){
+
+    //Mengumpuk pemboleh ubah untuk menyimpan data daripada pengguna
+    $ic=;
+    $pilihan=$_GET['fpilih'];
+    $date=date("Y-m-d H:i:s");
+
+    $sqlInsertUndi=mysqli_query($con,"INSERT INTO maklumat_pengundian(`IDPengguna`,`IDPermainan`,`Tarikh`) VALUES('$ic','$pilihan','$date')");
+
+    //Menyemak jika memenuhi semua keadaan, tambah rekod ke dalam jadual dan memaparkan mesej
+    if($sqlInsertUndi)
+        {
+        echo"<script>alert('Pengundian telah berjaya ! Jumlah undian sedang dikira.');
+            window.location.replace('laporanPengundi.php');</script>";
+        }
+    else{
+        echo"<script>alert('Pengundian anda gagal ! Sila membuat pengundian.');
+            window.location.replace('undi.php');</script>";
+    }
+    }
+
+?>

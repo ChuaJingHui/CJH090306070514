@@ -39,7 +39,7 @@
                 </tr>
             <tr>
                     <td colspan="2" style="text-align: center;">
-                        <input type="submit" value="CETAK" class="btn">
+                        <button onclick="window.print()" class="btn">CETAK</button>
                     </td>
                 </tr>
             </table>
