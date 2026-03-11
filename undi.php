@@ -18,7 +18,7 @@
       </nav>
 
       <!--MEMBUAT PENGUNDIAN-->
-        <form onsubmit="" action="" method="POST">
+        <form onsubmit="" action="" method="GET">
             <table class="undi">
                 <tr>
                     <td>
@@ -34,11 +34,11 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="radio" id="pilih_tradisional" name="fpilih" class="pilih">
+                        <input type="radio" id="pilih_tradisional" name="fpilih" value="U01" class="pilih" required>
                         <label for="pilih_tradisional">Pilih</label>
                     </td>
                     <td>
-                        <input type="radio" id="pilih_digital" name="fpilih" class="pilih">
+                        <input type="radio" id="pilih_digital" name="fpilih" value="U02" class="pilih" required>
                         <label for="pilih_digital">Pilih</label>
                     </td>
                 </tr>
