@@ -21,10 +21,10 @@
         <h1>LOG MASUK</h1>
       
 
-      <form action="login.php" method="POST">
+      <form action="login.php" method="GET">
         <table>
             <tr>
-              <td colspan="3"><input type="text" id="fIC" name="fIC" placeholder="IDPengguna" class="user" required></td>
+              <td colspan="3"><input type="text" id="ic" name="ic" placeholder="IDPengguna" class="user" required></td>
             </tr>
             <tr>
               <td colspan="3"><input type="text" id="fpassword" name="fpassword" placeholder="Kata Laluan" class="user" required></td>
@@ -33,7 +33,7 @@
               <td colspan="3"><a href="register.php" class="register">Daftar Akaun Baharu?</a></td>
             </tr>
             <tr>
-              <td style="text-align: right;padding-right:20%;"><input type="submit" value="Sahkan" class="btn"></td>
+              <td style="text-align: right;padding-right:20%;"><input type="submit" name="login" value="Sahkan" class="btn"></td>
             </tr>
           </table>
       </form>
@@ -52,7 +52,7 @@
     if(isset($_GET['login'])){
 
     //Mengumpukkan pemboleh ubah untuk menyimpan data daripada pengguna
-    $username=$_GET['fIC'];
+    $username=$_GET['ic'];
     $password=$_GET['fpassword'];
 
     if($username==="admin" && $password==="123")
@@ -62,7 +62,7 @@
     }
     else{
       //Melakukan query untuk mengesahkan akaun pengguna
-      $rekod=mysqli_query($con,"SELECT * FROM 'Pengguna' WHERE IDPengguna='$username' AND KataLaluan='$password'");
+      $rekod=mysqli_query($con,"SELECT * FROM Pengguna WHERE IDPengguna='$username' AND KataLaluan='$password'");
 
       //Hasil carian rekod dari Pangkalan Data
       $hasilCarian=mysqli_num_rows($rekod);

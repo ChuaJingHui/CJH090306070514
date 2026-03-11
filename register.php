@@ -98,3 +98,32 @@
       </footer>
     </body>
 </html>
+<?php
+
+    //Menghubung ke pangkalan data
+    require('config.php');
+
+    if(isset($_GET['register'])){
+
+    //Mengumpuk pemboleh ubah untuk menyimpan data daripada pengguna
+    $name=$_GET['nama'];
+    $noKP=$_GET['noKP'];
+    $password=$_GET['kataLaluan'];
+    $kelas=$_GET['kelas'];
+
+    $sqlInsertPengguna=mysqli_query($con,"INSERT INTO `pengguna`(`IDPengguna`,`KataLaluan`) VALUES('$noKP','$password')");
+    $sqlInsertPengundi=mysqli_query($con,"INSERT INTO `pengundi`(`IDPengguna`,`Nama`,`IDKelas`) VALUES('$noKP','$name','$kelas')");
+
+    //Menyemak jika memenuhi semua keadaan, tambah rekod ke dalam jadual dan memaparkan mesej
+    if($sqlInsertPengguna && $sqlInsertPengundi)
+        {
+        echo"<script>alert('Pendaftaran berjaya! Anda boleh gunakan IDPengguna sebagai nama untuk mengundi.');
+            window.location='login.php';</script>";
+        }
+    else{
+        echo"<script>alert('Pendaftaran akaun baharu gagal ! IDPengguna yang dimasukkan telah wujud.');
+            window.location='register.php';</script>";
+    }
+    }
+
+?>
