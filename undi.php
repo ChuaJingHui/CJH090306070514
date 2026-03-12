@@ -1,3 +1,47 @@
+<?php
+    session_start();
+    //Menghubung ke pangkalan data
+    require('config.php');
+
+    if(!isset($_SESSION['ic'])){
+    header("Location:login.php");
+    exit();
+}
+
+$noKP=$_SESSION['ic'];
+
+$semak=mysqli_query($con,"SELECT * FROM maklumat_pengundian WHERE IDPengguna='$noKP'");
+
+if(!$semak){
+    die("Query semak undian gagal:".mysqli_error($con));
+}
+$sudah_undi=mysqli_num_rows($semak)>0;
+
+
+
+    if(isset($_POST['undi'])){
+
+    //Mengumpuk pemboleh ubah untuk menyimpan data daripada pengguna
+    $pilihan=$_POST['fpilih'];
+    date_default_timezone_set("Asia/Kuala_Lumpur");
+
+
+
+    //Simpan Undian
+    $sqlInsertUndi = mysqli_query($con, "INSERT INTO maklumat_pengundian(`IDPengguna`,`IDPermainan`,`Tarikh`) 
+                 VALUES('$noKP', '$pilihan', NOW())");
+
+    //Menyemak jika memenuhi semua keadaan, tambah rekod ke dalam jadual dan memaparkan mesej
+    if($sqlInsertUndi){
+        echo "<script>alert('Undian berjaya dihantar');window.location='laporanPengundi.php'</script>";
+    }
+    else{
+        die("Insert undi gagal: ".mysqli_error($con));
+    }
+    }
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +62,7 @@
       </nav>
 
       <!--MEMBUAT PENGUNDIAN-->
-        <form onsubmit="" action="" method="GET">
+        <form action="undi.php" method="POST">
             <table class="undi">
                 <tr>
                     <td>
@@ -54,29 +98,3 @@
       </footer>
     </body>
 </html>
-<?php
-    //Menghubung ke pangkalan data
-    require('config.php');
-
-    if(isset($_GET['undi'])){
-
-    //Mengumpuk pemboleh ubah untuk menyimpan data daripada pengguna
-    $ic=;
-    $pilihan=$_GET['fpilih'];
-    $date=date("Y-m-d H:i:s");
-
-    $sqlInsertUndi=mysqli_query($con,"INSERT INTO maklumat_pengundian(`IDPengguna`,`IDPermainan`,`Tarikh`) VALUES('$ic','$pilihan','$date')");
-
-    //Menyemak jika memenuhi semua keadaan, tambah rekod ke dalam jadual dan memaparkan mesej
-    if($sqlInsertUndi)
-        {
-        echo"<script>alert('Pengundian telah berjaya ! Jumlah undian sedang dikira.');
-            window.location.replace('laporanPengundi.php');</script>";
-        }
-    else{
-        echo"<script>alert('Pengundian anda gagal ! Sila membuat pengundian.');
-            window.location.replace('undi.php');</script>";
-    }
-    }
-
-?>

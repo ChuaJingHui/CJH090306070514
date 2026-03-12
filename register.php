@@ -20,7 +20,7 @@
       <center>
         <h1>Pendaftaran</h1>
       <!--Key in daftar maklumat-->
-      <form onsubmit="return validateIC()" action="register.php" method="GET">
+      <form onsubmit="return validateIC()" action="register.php" method="POST">
 
         <table class="register" style="width: 60%; margin: auto;"> <tr>
               <td colspan="3">
@@ -130,13 +130,13 @@
     //Menghubung ke pangkalan data
     require('config.php');
 
-    if(isset($_GET['register'])){
+    if(isset($_POST['register'])){
 
     //Mengumpuk pemboleh ubah untuk menyimpan data daripada pengguna
-    $noKP=$_GET['ic'];
-    $name=$_GET['fname'];
-    $kelas=$_GET['Kelas'];
-    $password=$_GET['fpassword'];
+    $noKP=$_POST['ic'];
+    $name=$_POST['fname'];
+    $kelas=$_POST['Kelas'];
+    $password=$_POST['fpassword'];
 
     $sqlInsertPengguna=mysqli_query($con,"INSERT INTO pengguna(`IDPengguna`,`KataLaluan`) VALUES('$noKP','$password')");
     $sqlInsertPengundi=mysqli_query($con,"INSERT INTO pengundi(`IDPengguna`,`Nama`,`IDKelas`) VALUES('$noKP','$name','$kelas')");

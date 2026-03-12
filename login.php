@@ -1,3 +1,43 @@
+<?php
+    session_start();
+    //Menghubung ke pangkalan data
+    require('config.php'); //require('config.php');
+
+    if(isset($_POST['login'])){
+
+    //Mengumpukkan pemboleh ubah untuk menyimpan data daripada pengguna
+    $nama=$_POST['ic'];
+    $password=$_POST['fpassword'];
+
+    if($nama==="admin" && $password==="123")
+    {
+      echo"<script>alert('Anda telah berjaya log masuk.');</script>";
+      echo"<script>window.location.replace('laporan.php')</script>";
+    }
+    else{
+      //Melakukan query untuk mengesahkan akaun pengguna
+      $rekod=mysqli_query($con,"SELECT * FROM Pengguna WHERE IDPengguna='$nama' AND KataLaluan='$password'");
+
+      //Hasil carian rekod dari Pangkalan Data
+      $hasilCarian=mysqli_num_rows($rekod);
+
+      //Semak pengguna berjaya atau gagal untuk log masuk ke dalam sistem 
+      if($hasilCarian>0){   //if((hasilCarian>0)or($hasilCarianPeserta>0))
+
+        $_SESSION['ic']=$nama;
+
+        echo "<script>alert('Anda telah berjaya log masuk.');</script>";
+        echo "<script>window.location.replace('undi.php')</script>";
+      }
+      else{
+        echo "<script>alert('Harap Maaf.Username atau Kata Laluan anda salah');
+        window.location.replace('login.php');</script>";
+      }
+    }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,7 +61,7 @@
         <h1>LOG MASUK</h1>
       
 
-      <form action="login.php" method="GET">
+      <form action="login.php" method="POST">
         <table>
             <tr>
               <td colspan="3"><input type="text" id="ic" name="ic" placeholder="IDPengguna" class="user" required></td>
@@ -75,43 +115,7 @@
       </footer>
     </body>
 </html>
-<?php
 
-    //Menghubung ke pangkalan data
-    require('config.php'); //require('config.php');
-
-    if(isset($_GET['login'])){
-
-    //Mengumpukkan pemboleh ubah untuk menyimpan data daripada pengguna
-    $username=$_GET['ic'];
-    $password=$_GET['fpassword'];
-
-    if($username==="admin" && $password==="123")
-    {
-      echo"<script>alert('Anda telah berjaya log masuk.');</script>";
-      echo"<script>window.location.replace('laporan.php')</script>";
-    }
-    else{
-      //Melakukan query untuk mengesahkan akaun pengguna
-      $rekod=mysqli_query($con,"SELECT * FROM Pengguna WHERE IDPengguna='$username' AND KataLaluan='$password'");
-
-      //Hasil carian rekod dari Pangkalan Data
-      $hasilCarian=mysqli_num_rows($rekod);
-
-      //Semak pengguna berjaya atau gagal untuk log masuk ke dalam sistem 
-      if($hasilCarian>0){   //if((hasilCarian>0)or($hasilCarianPeserta>0))
-
-        echo "<script>alert('Anda telah berjaya log masuk.');</script>";
-        echo "<script>window.location.replace('undi.php')</script>";
-      }
-      else{
-        echo "<script>alert('Harap Maaf.Username atau Kata Laluan anda salah');
-        window.location.replace('login.php');</script>";
-      }
-    }
-    }
-
-?>
 
 
 
