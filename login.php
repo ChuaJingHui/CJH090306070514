@@ -51,7 +51,6 @@
         </div>
         <div class="navButtons">
           <a href="register.php" class="nav-btn">DAFTAR</a>
-          <a href="laporan.php" class="nav-btn">LAPORAN</a>
           <a href="login.php" class="nav-btn">KELUAR</a>
         </div>
  

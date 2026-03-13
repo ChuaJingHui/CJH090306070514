@@ -1,3 +1,12 @@
+SELECT pengundi.IDPengguna,pengundi.Nama,senarai_permainan.Permainan,kelas.Kelas,maklumat_pengundian.Tarikh
+FROM maklumat_pengundian
+INNER JOIN pengundi
+ON maklumat_pengundian.IDPengguna=pengundi.IDPengguna
+INNER JOIN senarai_permainan
+ON maklumat_pengundian.IDPermainan=senarai_permainan.IDPermainan
+INNER JOIN kelas
+ON pengundi.IDKelas=kelas.IDKelas 
+ORDER BY Nama ASC;
 <!-- <!DOCTYPE html>
 <html>
     <head>
