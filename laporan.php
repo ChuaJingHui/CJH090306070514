@@ -1,62 +1,29 @@
 <?php
+// Menyambung ke pelayan pangkalan data MySQL
 require "config.php";
 
-// 1. Sediakan penyataan SQL (The SQL query you provided)
-$sql = "SELECT pengundi.IDPengguna, pengundi.Nama, senarai_permainan.Permainan, kelas.Kelas, maklumat_pengundian.Tarikh
+// Menghasilkan arahan gabungan pelbagai jadual (JOIN) bagi memaparkan maklumat lengkap 
+$arahan_sql = "SELECT pengundi.IDPengguna, pengundi.Nama, senarai_permainan.Permainan, kelas.Kelas, maklumat_pengundian.Tarikh
         FROM maklumat_pengundian
         INNER JOIN pengundi ON maklumat_pengundian.IDPengguna = pengundi.IDPengguna
         INNER JOIN senarai_permainan ON maklumat_pengundian.IDPermainan = senarai_permainan.IDPermainan
         INNER JOIN kelas ON pengundi.IDKelas = kelas.IDKelas 
-        ORDER BY Tarikh DESC";
+        ORDER BY maklumat_pengundian.Tarikh DESC";
 
-// 2. Laksanakan query
-$result = mysqli_query($con, $sql); // Pastikan $kon adalah nama variabel sambungan dalam config.php
+$hasil_carian = mysqli_query($sambungan, $arahan_sql); 
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Pengundian</title>
+        <title>Laporan Pengundian</title>
         <link rel="stylesheet" href="styles.css">
-        <style>
-            @media print {
-                nav, footer, .btn-container {
-                    display: none;
-                }
-                table {
-                    width: 100%;
-                    border-collapse: collapse;
-                }
-                th, td {
-                    border: 1px solid black;
-                    padding: 8px;
-                }
-                body {
-                    text-align: center;
-                }
+        <script>
+            // Fungsi JS untuk memanggil skrin cetakan komputer
+            function printTable(){
+                window.print();
             }
-            .laporan {
-                width: 80%;
-                margin: 20px auto;
-                border-collapse: collapse;
-            }
-            .laporan th, .laporan td {
-                border: 1px solid #ddd;
-                padding: 10px;
-                text-align: left;
-            }
-            .btn-container {
-                text-align: center;
-                margin-top: 10px;
-                margin-bottom:20px;
-            }
-        </style>
+        </script>
     </head>
-    <script>
-        function printTable(){
-            window.print();
-        }
-    </script>
-
     <body>
       <nav class="nav">
         <div class="navTop">
@@ -70,45 +37,51 @@ $result = mysqli_query($con, $sql); // Pastikan $kon adalah nama variabel sambun
         </div>
       </nav>
 
-      <h2 style="text-align:center;">LAPORAN PENGUNDIAN</h2>
+      <center>
+          <h2 style="margin: 30px 0 20px 0; color: #333;">LAPORAN PENUH KESELURUHAN PENGUNDIAN</h2>
+      </center>
 
       <table class="laporan">
         <thead>
           <tr>
             <th>ID Pengguna</th>
-            <th>Nama</th>
-            <th>Pengundian (Permainan)</th>
+            <th>Nama Penuh Pengundi</th>
+            <th>Pilihan Permainan</th>
             <th>Kelas</th>
-            <th>Tarikh</th>
+            <th>Tarikh Mengundi</th>
           </tr>
         </thead>
         <tbody>
           <?php
-          // 3. Semak jika ada data
-          if (mysqli_num_rows($result) > 0) {
-              // 4. Paparkan data setiap baris
-              while($row = mysqli_fetch_assoc($result)) {
+          // Menyemak adakah wujud sekurang-kurangnya satu data untuk dipaparkan
+          if (mysqli_num_rows($hasil_carian) > 0) {
+              
+              // Cipta baris baharu (row) selagi rekod data belum habis dibaca
+              while($baris = mysqli_fetch_assoc($hasil_carian)) {
                   echo "<tr>";
-                  echo "<td>" . $row['IDPengguna'] . "</td>";
-                  echo "<td>" . $row['Nama'] . "</td>";
-                  echo "<td>" . $row['Permainan'] . "</td>";
-                  echo "<td>" . $row['Kelas'] . "</td>";
-                  echo "<td>" . $row['Tarikh'] . "</td>";
+                  echo "<td>" . htmlspecialchars($baris['IDPengguna']) . "</td>";
+                  echo "<td style='text-align:left; padding-left:15px;'>" . htmlspecialchars($baris['Nama']) . "</td>";
+                  echo "<td>" . htmlspecialchars($baris['Permainan']) . "</td>";
+                  echo "<td>" . htmlspecialchars($baris['Kelas']) . "</td>";
+                  echo "<td>" . htmlspecialchars($baris['Tarikh']) . "</td>";
                   echo "</tr>";
               }
           } else {
-              echo "<tr><td colspan='5' style='text-align:center;'>Tiada rekod dijumpai</td></tr>";
+              // Paparkan mesej ketiadaan rekod
+              echo "<tr><td colspan='5' style='text-align:center; padding: 20px; color: red;'>Masih tiada rekod dijumpai dalam sistem.</td></tr>";
           }
           ?>
         </tbody>
       </table>
 
-      <div class="btn-container">
-          <button onclick="printTable()" class="btn">CETAK LAPORAN</button>
-      </div>
+      <center>
+          <div class="btn-container">
+              <button onclick="printTable()" class="btn-cetak">CETAK LAPORAN</button>
+          </div>
+      </center>
 
       <footer>
-        <p class="copyright">Disediakan oleh Chua Jing Hui</p>
+        <center><p class="copyright">Disediakan oleh Chua Jing Hui</p></center>
       </footer>
     </body>
 </html>

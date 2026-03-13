@@ -1,17 +1,21 @@
 <?php
+// Sambungan ke pelayan MySQL
 require "config.php";
 
-$sql = "SELECT pengundi.IDPengguna, pengundi.Nama, kelas.Kelas 
+// Menghasilkan arahan carian menyatukan nama kelas bagi pengundi
+$arahan_sql = "SELECT pengundi.IDPengguna, pengundi.Nama, kelas.Kelas 
         FROM pengundi 
         INNER JOIN kelas ON pengundi.IDKelas = kelas.IDKelas 
         ORDER BY pengundi.IDPengguna ASC";
-$result = mysqli_query($con, $sql);
+
+$hasil_carian = mysqli_query($sambungan, $arahan_sql);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Kemaskini</title>
-    <link rel="stylesheet" href="styles.css"> </head>
+    <title>Sistem Kemaskini</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
 <body>
     <nav class="nav">
         <div class="navTop">
@@ -26,27 +30,44 @@ $result = mysqli_query($con, $sql);
     </nav>
 
     <center>
-        <h1 style="margin: 20px 0;">KEMASKINI MAKLUMAT PENGUNDI</h1>
+        <h1 style="margin: 20px 0;">KEMASKINI MAKLUMAT PENGUNDI (ADMIN)</h1>
+        
+        <div>
+            <a href="tambah_pengundi.php" class="btn-tambah">+ TAMBAH PENGUNDI BARU</a>
+        </div>
         
         <table class="kemaskini">
             <thead>
                 <tr>
                     <th>ID Pengguna</th>
-                    <th>Nama</th>
-                    <th>Kelas</th>
-                    <th colspan="2">Tindakan</th>
+                    <th>Nama Pengundi</th>
+                    <th>Kelas Berdaftar</th>
+                    <th colspan="2">Tindakan Admin</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                while($row = mysqli_fetch_assoc($result)) {
+                while($baris = mysqli_fetch_assoc($hasil_carian)) {
                     echo "<tr>";
-                    echo "<td>" . $row['IDPengguna'] . "</td>";
-                    echo "<td>" . $row['Nama'] . "</td>";
-                    echo "<td>" . $row['Kelas'] . "</td>";
-                    // Gunakan pautan teks atau butang kecil
-                    echo "<td><a href='edit_pengundi.php?id=".$row['IDPengguna']."' style='color: blue; font-weight: bold; text-decoration: none;'>EDIT</a></td>";
-                    echo "<td><a href='padam_pengundi.php?id=".$row['IDPengguna']."' style='color: red; font-weight: bold; text-decoration: none;' onclick='return confirm(\"Padam rekod ini?\")'>PADAM</a></td>";
+                    echo "<td>" . $baris['IDPengguna'] . "</td>";
+                    echo "<td>" . $baris['Nama'] . "</td>";
+                    echo "<td>" . $baris['Kelas'] . "</td>";
+                    
+                    // -- PENTING: Penggunaan kaedah POST untuk fungsi EDIT --
+                    echo "<td>
+                            <form action='edit_pengundi.php' method='POST' style='margin: 0;'>
+                                <input type='hidden' name='id_pengguna' value='" . $baris['IDPengguna'] . "'>
+                                <button type='submit' style='color: blue; font-weight: bold; background: none; border: none; cursor: pointer; font-size: 16px; text-decoration: underline;'>EDIT</button>
+                            </form>
+                          </td>";
+                          
+                    // -- PENTING: Penggunaan kaedah POST untuk fungsi PADAM beserta sistem amaran --
+                    echo "<td>
+                            <form action='padam_pengundi.php' method='POST' style='margin: 0;' onsubmit='return confirm(\"Adakah anda pasti untuk padam rekod pengundi ini secara kekal?\")'>
+                                <input type='hidden' name='id_pengguna' value='" . $baris['IDPengguna'] . "'>
+                                <button type='submit' style='color: red; font-weight: bold; background: none; border: none; cursor: pointer; font-size: 16px; text-decoration: underline;'>PADAM</button>
+                            </form>
+                          </td>";
                     echo "</tr>";
                 }
                 ?>

@@ -1,162 +1,161 @@
-html{
-    height:100%;
+/* Menetapkan ketinggian penuh halaman */
+html {
+    height: 100%;
 }
 
+/* Tetapan gaya teks dan susun atur utama badan halaman */
 body {
     font-family: "Times New Roman", sans-serif;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensures the body always takes up the full screen height */
-    margin: 0; /* Removes default browser margins so you don't get unwanted scrollbars */
+    min-height: 100vh;
+    margin: 0;
 }
 
-button,select,input::placeholder{
-        font-family: "Times New Roman", sans-serif;
-        display: flex;
-        flex-direction: column;
-    }
+/* Memastikan jenis tulisan seragam untuk butang dan input */
+button, select, input::placeholder {
+    font-family: "Times New Roman", sans-serif;
+}
 
-
-
-/* Navigation */
+/* --- Bahagian Navigasi (Menu Atas) --- */
 nav {
-  background-color: #81d6f0;
-  padding: 0.5px;
-  width: 100%;              
-  position: sticky;           
-  top: 0;                    
-  left: 0;                              
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  
-  text-align: center;
+    background-color: #81d6f0; /* Warna latar belakang biru cair */
+    padding: 0.5px;
+    width: 100%;              
+    position: sticky; /* Memastikan menu sentiasa kekal di atas apabila diskrol */
+    top: 0;                    
+    left: 0;                              
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Kesan bayang-bayang */
+    text-align: center;
 }
 
+/* Susun atur teks di dalam navigasi */
 .navTop {
-
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;               
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;               
 }
 
-/* navButtons */
+/* Kotak untuk kumpulan butang navigasi */
 .navButtons {
     display: flex;
-    text-align:center;
-    justify-content: center; /* Letakkan di tengah halaman */
+    text-align: center;
+    justify-content: center;
     margin: 20px auto;
-    width: 100%;      /* Lebar ikut kandungan */
-    border: 2px solid black; /* Garisan luar kotak besar */
+    width: 100%;      
+    border: 2px solid black;
     background-color: white;
 }
 
-/* Gaya Butang Navigasi */
+/* Gaya khusus untuk setiap butang navigasi */
 .nav-btn {
-    flex:1;
+    flex: 1;
     text-decoration: none;
     color: black;
-    padding: 10px 40px;      /* Ruang kiri-kanan yang luas */
+    padding: 10px 40px;      
     font-weight: bold;
     font-size: 18px;
     display: inline-block;
 }
 
+/* Menambah garisan pembahagi antara butang kecuali yang terakhir */
 .nav-btn:not(:last-child) {
     border-right: 2px solid black; 
 }
 
-/* Kesan apabila tetikus lalu (Hover) */
+/* Kesan hover apabila tetikus berada di atas butang navigasi */
 .nav-btn:hover {
     background-color: black;
     color: white;
-    transform: translateY(-2px); /* Butang naik sikit bila hover */
+    transform: translateY(-2px); /* Kesan butang naik sedikit */
 }
 
-/* Button */
+/* --- Gaya Butang Am (General Buttons) --- */
 .btn {
-  color: #0a0e11;
-  padding: 0.8rem 1.4rem;
-  text-decoration: none;
-  border-radius: 12px;
-  font-weight: 700;
-  box-shadow: 2px 2px 8px ;
-  transition: background-color 0.3s ease;
-  display: inline-block;
-  margin-top: 1rem;
-  margin-right: 50px;
+    color: #0a0e11;
+    padding: 0.8rem 1.4rem;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 700;
+    box-shadow: 2px 2px 8px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: 1rem;
+    cursor: pointer;
 }
 
-.navbtn{
-  color: #0a0e11;
-  padding: 0.8rem 3rem;
-  text-decoration: none;
-  border-radius: 12px;
-  font-weight: 700;
-  box-shadow: 2px 2px 8px ;
-  transition: background-color 0.3s ease;
-  display: inline-block;
-  margin-top: 1rem;
-  margin-right: 50px;
-  width:30px;
-
-}
-.navbtn:hover {
-  background-color: #5580a4;
-  cursor: pointer;
-}
+/* Kesan hover untuk butang am */
 .btn:hover {
-  background-color: #5580a4;
-  cursor: pointer;
+    background-color: #5580a4;
 }
-/* Table */
+
+/* Butang khusus untuk cetakan laporan/keputusan */
+.btn-cetak {
+    background-color: #008CBA;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-cetak:hover {
+    background-color: #005f80; 
+}
+
+/* Butang untuk menghantar borang (Submit) */
+.btn-submit {
+    background-color: #4CAF50; /* Warna hijau */
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+/* Bekas (Container) untuk meletakkan butang di tengah halaman */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+/* Butang khusus untuk halaman tambah pengundi */
+.btn-tambah {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+/* --- Gaya Am untuk Jadual (Table) --- */
 table {
     width: 60%;
-    height:200px;
     margin-bottom: 30px;
-    border-radius: 8px ;
-    overflow: hidden; 
+    border-radius: 8px;
     text-align: center;
     margin: auto;
 }
 
-.navTable{
-    height:30px;
-    width:100%;
-}
-
-
-.user {
-    width: 100%; /* Makes all inputs and selects fill their container */
-    height: 40px; /* Gives them a consistent height */
-    padding: 10px;
-    box-sizing: border-box; /* Ensures padding doesn't add to the total width */
-    margin: 5px 0; /* A little breathing room */
-    font-family: "Times New Roman", sans-serif;
-    font-size: 16px;
-}
-
-select.user {
-    /* 1. Hide the default, stubborn browser arrow */
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    /* 2. Add our own clean, custom arrow */
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: 18px; /* Size of the new arrow */
-
-    /* 3. THIS IS THE MAGIC LINE: Move the arrow to the left! */
-    /* "calc(100% - 15px)" means place it 15px away from the right edge */
-    background-position: calc(100% - 15px) center; 
-    
-    /* 4. Make sure text doesn't type over the new arrow */
-    padding-right: 40px; 
-}
-
-.register{
-    font-size: 20px;
-}
-
-
+/* --- Jadual untuk Halaman Kemaskini --- */
 .kemaskini {
     width: 90%;
     margin: 20px auto;
@@ -165,45 +164,177 @@ select.user {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+/* Pengepala jadual kemaskini */
 .kemaskini thead {
-    background-color: #124c8b; /* Biru gelap mengikut tema anda */
+    background-color: #124c8b; /* Biru gelap */
     color: white;
 }
 
+/* Sel di dalam jadual kemaskini */
 .kemaskini th, .kemaskini td {
     padding: 12px;
     border: 1px solid #ddd;
     text-align: center;
 }
 
-/* Zebra striping */
+/* Warna berselang-seli untuk baris jadual (Zebra striping) */
 .kemaskini tbody tr:nth-child(odd) {
     background-color: #f2f2f2;
 }
 
+/* Kesan hover untuk baris jadual */
 .kemaskini tbody tr:hover {
     background-color: #d1ecf1;
 }
 
+/* --- Jadual untuk Halaman Laporan --- */
+.laporan {
+    width: 85%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
 
+.laporan th, .laporan td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
 
-/*Tooltip style*/
-    .tooltip{
-        color:red;
-        background-color:rgb(255, 255, 255);
-        padding:5px 8px;
-        font-size:12px;
-        margin-top:4px;
-        display:none;
-        border-radius: 4px;
-    }
+/* Pengepala laporan dengan warna tema */
+.laporan th {
+    background-color: #008CBA; 
+    color: white;
+    font-size: 1.1em;
+}
 
+.laporan tr:nth-child(even) {
+    background-color: #e6f7ff; 
+}
 
-    .invalid{
-        border:2px solid rgb(255, 255, 255);
-    }
+.laporan tr:hover {
+    background-color: #cceeff; 
+}
 
-    /* Container to hold the input and the icon */
+/* --- Gaya untuk Jadual Undi & Keputusan --- */
+.undi-container {
+    width: 70%;
+    margin: 30px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.undi { 
+    margin: 50px auto 20px auto;
+    font-size: 25px; 
+    border-collapse: collapse; 
+    width: 80%; 
+}
+
+.undi th {
+    background-color: #008CBA;
+    color: white;
+    padding: 15px;
+    font-size: 1.2em;
+    border-radius: 5px 5px 0 0;
+}
+
+.undi td {
+    padding: 20px; 
+    vertical-align: top;
+    width: 50%; 
+    border: 2px solid black;
+    text-align: center;
+    background-color: white;
+}
+
+/* Membuang sempadan untuk baris akhir yang mengandungi butang */
+.undi tr:last-child td {
+    border: none !important;
+    padding: 20px;
+    background-color: transparent;
+}
+
+/* Gaya gambar di dalam jadual undian */
+.undi img { 
+    width: 300px; 
+    height: 250px; 
+    object-fit: cover; 
+    display: block; 
+    margin: 10px auto; 
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Teks paparan jumlah keputusan undian */
+.jumlah-undi {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #d9534f; /* Merah menyerlah */
+    margin-top: 10px;
+}
+
+/* Teks nama permainan */
+.tajuk-permainan {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* --- Borang & Input (Forms) --- */
+.user {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 5px 0;
+    font-family: "Times New Roman", sans-serif;
+    font-size: 16px;
+}
+
+/* Penyesuaian ikon 'dropdown' untuk kotak pilihan (Select) */
+select.user {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: calc(100% - 15px) center; 
+    padding-right: 40px; 
+}
+
+/* Gaya khusus untuk borang tambah rekod pengundi */
+.form-tambah {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    width: 50%;
+    text-align: left;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.form-tambah label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+}
+
+.form-tambah input[type="text"], 
+.form-tambah input[type="password"], 
+.form-tambah select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* --- Ciri Sembunyi/Lihat Kata Laluan --- */
 .password-container {
     position: relative;
     width: 100%;
@@ -211,77 +342,95 @@ select.user {
     align-items: center;
 }
 
-/* Adjust the input to make room for the icon on the right */
-.password-container .user {
-    padding-right: 40px; /* Leaves space so text doesn't hide behind the eye */
+.password-container .user, .password-container input {
+    padding-right: 40px; 
     margin: 5px 0;
 }
 
-/* Position the eye icon */
+/* Gaya ikon mata untuk kata laluan */
 .eye-icon {
     position: absolute;
-    right: 15px; /* Distance from the right edge */
+    right: 15px; 
     cursor: pointer;
     font-size: 20px;
-    user-select: none; /* Prevents accidentally highlighting the icon */
+    user-select: none; 
     color: #555;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-/* Add a slight hover effect to the icon */
 .eye-icon:hover {
-    transform: scale(1.1);
+    transform: translateY(-50%) scale(1.1);
 }
 
-/*Undi*/
-/* 1. Bahagian Jadual */
-.undi { 
-    /* Buang 'border: solid' di sini supaya ia tidak bertindih dengan td */
-    margin: 50px auto 20px auto;
-    font-size: 25px; /* Kecilkan sikit supaya muat */
-    border-collapse: collapse; 
-    width: 80%; 
-}
-
-/* 2. Semua kotak (td) ada border */
-.undi td {
-    padding: 20px; 
-    vertical-align: top;
-    width: 50%; 
-    border: 2px solid black; /* Ini yang buat border pada 'Pilih' site */
+/* --- Gaya Khas untuk Laman Undian (undi.php) --- */
+.pilihan-container {
     text-align: center;
-    padding: 5px 10px; /* Top/Bottom: 5px, Left/Right: 10px */
+    padding: 10px;
 }
 
-
-
-/* 3. SEMBUNYIKAN border pada baris terakhir (Butang Sahkan) */
-.undi tr:last-child td {
-    border: none !important;
-    padding:20px;
+.tajuk-pilihan {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #008CBA;
 }
 
-.undi img { 
-    width: 300px; 
-    height: 250px; 
-    object-fit: cover; /* Supaya imej tidak terpenyet */
-    display: block; 
-    margin: 10px auto; 
+.definisi {
+    font-size: 1em;
+    color: #555;
+    margin: 10px 0 20px 0;
 }
 
-.btn{
-    width:auto;
-    height:auto;
-    padding:10px;
-    font-size: 25px;
+/* Membesarkan butang radio pilihan undian */
+.radio-pilih {
+    transform: scale(1.5); 
+    margin-right: 10px;
     cursor: pointer;
 }
 
-form {
-    flex: 1;
+.label-pilih {
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
 }
 
+/* Kotak mesej amaran jika pengundi sudah mengundi */
+.mesej-sudah-undi {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 30px;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    width: 60%;
+    margin: 50px auto;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 
-/* Footer */
+.mesej-sudah-undi h2 {
+    margin-top: 0;
+    color: #d9534f;
+}
+
+/* --- Validasi Ralat & Tooltips --- */
+.tooltip {
+    color: red;
+    background-color: rgb(255, 255, 255);
+    padding: 5px 8px;
+    font-size: 12px;
+    margin-top: 4px;
+    display: none;
+    border-radius: 4px;
+}
+
+/* Kotak berwarna merah jika input tidak sah */
+.invalid {
+    border-color: red !important;
+    background-color: #ffe6e6;
+}
+
+/* --- Gaya Bahagian Bawah Halaman (Footer) --- */
 footer {
     background-color: #81d6f0;
     text-align: center;
@@ -290,6 +439,28 @@ footer {
     padding: 20px 0;
     width: 100%;
     height: auto;
-    margin-top: auto; /* This is the magic line that pushes it to the bottom */
+    margin-top: auto;
 }
 
+/* --- Format Khas Semasa Mencetak Dokumen (Print Media) --- */
+@media print {
+    /* Menyembunyikan navigasi, butang dan kaki halaman semasa mencetak */
+    nav, footer, .btn-container, .btn-cetak {
+        display: none !important;
+    }
+    .laporan, .undi-container {
+        width: 100%;
+        box-shadow: none;
+    }
+    .laporan th, .undi th {
+        background-color: #cccccc !important; /* Tukar ke warna kelabu untuk jimat dakwat */
+        color: black !important;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+    body {
+        text-align: center;
+    }
+}

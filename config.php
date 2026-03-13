@@ -1,11 +1,12 @@
 <?php
+// Menyediakan maklumat sambungan pangkalan data (Host, Username, Password)
+$sambungan = mysqli_connect("localhost", "root", "");
 
-$con = mysqli_connect("localhost","root","");
-
-if(!$con){
-    die('Sambungan kepada Pangkalan Data Gagal'.mysqli_connect_error());
+// Semak jika fail gagal disambungkan kepada pelayan pangkalan data
+if(!$sambungan){
+    die('Sambungan kepada Pangkalan Data Gagal: ' . mysqli_connect_error());
 }
 
-mysqli_select_db($con,"CJH090306070514");
-
+// Memilih pangkalan data yang spesifik untuk digunakan dalam sistem ini
+mysqli_select_db($sambungan, "CJH090306070514");
 ?>
