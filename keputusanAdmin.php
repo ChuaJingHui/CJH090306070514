@@ -33,6 +33,7 @@ $jumlah_digital = $data_digital['Jumlah'];
           <h1>SISTEM PENGUNDIAN PERMAINAN KEGEMARAN REMAJA</h1>
         </div>
         <div class="navButtons">
+          <a href="import.php" class="nav-btn">IMPORT</a>
           <a href="laporan.php" class="nav-btn">LAPORAN</a>
           <a href="keputusanAdmin.php" class="nav-btn">KEPUTUSAN</a>
           <a href="kemaskini.php" class="nav-btn">KEMASKINI</a>

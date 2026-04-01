@@ -134,17 +134,6 @@ nav {
     width: 100%;
 }
 
-/* Butang khusus untuk halaman tambah pengundi */
-.btn-tambah {
-    background-color: #008CBA;
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 4px;
-    display: inline-block;
-    margin-bottom: 15px;
-}
 
 /* --- Gaya Am untuk Jadual (Table) --- */
 table {
@@ -445,7 +434,7 @@ footer {
 /* --- Format Khas Semasa Mencetak Dokumen (Print Media) --- */
 @media print {
     /* Menyembunyikan navigasi, butang dan kaki halaman semasa mencetak */
-    nav, footer, .btn-container, .btn-cetak {
+    nav, footer, .btn-container, .btn-cetak{
         display: none !important;
     }
     .laporan, .undi-container {
