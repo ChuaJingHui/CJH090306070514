@@ -19,6 +19,7 @@ $arahan_sql_digital = "SELECT COUNT(maklumat_pengundian.IDPengguna) AS Jumlah
 $hasil_digital = mysqli_query($sambungan, $arahan_sql_digital);
 $data_digital = mysqli_fetch_assoc($hasil_digital);
 $jumlah_digital = $data_digital['Jumlah'];
+
 ?>
 
 <!DOCTYPE html>
@@ -41,10 +42,12 @@ $jumlah_digital = $data_digital['Jumlah'];
         </div>
       </nav>
 
+      
+
       <div class="undi-container">
           <table class="undi">
               <tr>
-                  <th colspan="2">JUMLAH KEPUTUSAN UNDIAN KESELURUHAN (LIVE)</th>
+                  <th colspan="2">KEPUTUSAN UNDIAN KESELURUHAN (LIVE)</th>
               </tr>
               <tr>
                   <td>
@@ -60,6 +63,7 @@ $jumlah_digital = $data_digital['Jumlah'];
                       <div class="jumlah-undi"><?php echo $jumlah_digital; ?> Undian</div>
                   </td>
               </tr>
+              <tr style="text-align:center">Pemenang ialah
           </table>
       </div>
 

@@ -26,7 +26,7 @@
                 <form method="POST" enctype='multipart/form-data'>
                     <table style="width:fit-content;">
                         <tr>
-                            <td>Klik sini untuk import>>><input style="font-size:18;" type='file' name='DataKelas' required>
+                            <td>Import File Di Sini>>><input style="font-size:18;" type='file' name='DataKelas' required>
                         </tr>
                         <tr>
                             <td style="text-align:right;"><input type="submit" name="import" value='Import'></td>
@@ -52,11 +52,11 @@
                     while(($data=fgetcsv($handle,1000,","))!==FALSE){
                         $item1=mysqli_real_escape_string($sambungan,$data[0]);
                         $item2=mysqli_real_escape_string($sambungan,$data[1]);
-                        $import="INSERT INTO `kelas`(`IDkelas`,`kelas`) VALUES('item1','item2')";
+                        $import="INSERT INTO `kelas`(`IDkelas`,`kelas`) VALUES('$item1','$item2')";
                         mysqli_query($sambungan,$import);
                     }
                     fclose($handle);
-                    echo "<script>window.a;ert('Data kelas berjaya diimport.');
+                    echo "<script>window.alert('Data kelas berjaya diimport.');
                     windows.location.href='import.php';</script>";
                 }
             }
