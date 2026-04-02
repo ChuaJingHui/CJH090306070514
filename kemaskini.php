@@ -32,10 +32,7 @@ $hasil_carian = mysqli_query($sambungan, $arahan_sql);
 
     <center>
         <h1 style="margin: 20px 0;">KEMASKINI MAKLUMAT PENGUNDI (ADMIN)</h1>
-        
-        <div>
-            <a href="tambah_pengundi.php" class="btn-tambah">+ TAMBAH PENGUNDI BARU</a>
-        </div>
+    
         
         <table class="kemaskini">
             <thead>
