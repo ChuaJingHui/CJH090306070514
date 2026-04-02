@@ -54,6 +54,7 @@
           <h1>SISTEM PENGUNDIAN PERMAINAN KEGEMARAN REMAJA</h1>
         </div>
         <div class="navButtons">
+          <a href="lamanUtama.php" class="nav-btn">LAMAN UTAMA</a>
           <a href="register.php" class="nav-btn">DAFTAR</a>
           <a href="login.php" class="nav-btn">KELUAR</a>
         </div>
@@ -73,7 +74,7 @@
               <td colspan="3">
                 <div class="password-container">
                   <input type="password" id="fpassword" name="fpassword" placeholder="Kata Laluan" class="user" required>
-                  <span id="togglePassword" class="eye-icon"></span>
+                  <span id="togglePassword" class="eye-icon"></span> 
                 </div>
             </tr>
             <tr>

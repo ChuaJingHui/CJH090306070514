@@ -61,8 +61,9 @@
           <h1>SISTEM PENGUNDIAN PERMAINAN KEGEMARAN REMAJA</h1>
         </div>
         <div class="navButtons">
-          <a href="undi.php" class="nav-btn">PILIHAN UNDI</a>
-          <a href="login.php" class="nav-btn">LOG KELUAR</a>
+            <a href="lamanUtama.php" class="nav-btn">LAMAN UTAMA</a>
+            <a href="undi.php" class="nav-btn">UNDI</a>
+            <a href="login.php" class="nav-btn">LOG KELUAR</a>
         </div>
       </nav>
 

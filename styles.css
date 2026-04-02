@@ -52,9 +52,9 @@ nav {
     flex: 1;
     text-decoration: none;
     color: black;
-    padding: 10px 40px;      
+    padding: 10px 30px;      
     font-weight: bold;
-    font-size: 18px;
+    font-size: 15px;
     display: inline-block;
 }
 
@@ -106,6 +106,18 @@ nav {
 .btn-cetak:hover {
     background-color: #005f80; 
 }
+
+.umum-pemenang {
+    white-space: nowrap;      /* Halang teks daripada pecah baris */
+    text-align: center;       /* Letak di tengah-tengah */
+    font-weight: bold;        /* Optional: buat teks nampak lebih jelas */
+    padding: 15px 0;          /* Tambah ruang sikit atas dan bawah */
+    display: block;           /* Pastikan ia ambil ruang penuh */
+    width: 100%;
+}
+
+
+
 
 /* Butang untuk menghantar borang (Submit) */
 .btn-submit {
@@ -331,25 +343,40 @@ select.user {
     align-items: center;
 }
 
-.password-container .user, .password-container input {
-    padding-right: 40px; 
+/* Pastikan input ada ruang di sebelah kanan untuk ikon */
+.password-container .user {
+    padding-right: 40px !important; 
     margin: 5px 0;
 }
 
-/* Gaya ikon mata untuk kata laluan */
-.eye-icon {
-    position: absolute;
-    right: 15px; 
-    cursor: pointer;
-    font-size: 20px;
-    user-select: none; 
-    color: #555;
-    top: 50%;
-    transform: translateY(-50%);
+/* 1. Sembunyikan ikon mata bawaan Microsoft Edge */
+input::-ms-reveal,
+input::-ms-clear {
+    display: none !important;
 }
 
-.eye-icon:hover {
-    transform: translateY(-50%) scale(1.1);
+/* 2. Sembunyikan ikon mata/autofill bawaan Chrome & Safari */
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+    visibility: hidden !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    right: 0 !important;
+}
+
+/* 3. Pastikan ikon mata anda tidak bertindih dengan teks */
+.password-container .user {
+    padding-right: 45px !important;
+}
+
+.eye-icon {
+    background-color: white; /* Memberi latar belakang supaya ikon browser di belakang terlindung */
+    z-index: 10;
+}
+
+/* Pastikan tiada background-image lama yang tertinggal */
+.eye-icon svg {
+    display: block;
 }
 
 /* --- Gaya Khas untuk Laman Undian (undi.php) --- */

@@ -19,6 +19,17 @@ $arahan_sql_digital = "SELECT COUNT(maklumat_pengundian.IDPengguna) AS Jumlah
 $hasil_digital = mysqli_query($sambungan, $arahan_sql_digital);
 $data_digital = mysqli_fetch_assoc($hasil_digital);
 $jumlah_digital = $data_digital['Jumlah'];
+
+// ---- Bahagian 3: Fungsi Memaparkan Keputusan ----
+function keputusan($jumlah_digital,$jumlah_tradisional){
+    if ($jumlah_digital>$jumlah_tradisional){
+        return "Permainan Yang Mendapat Paling Banyak Undi Ialah Permainan Digital.";
+    }elseif($jumlah_tradisional>$jumlah_digital){
+        return "Permainan Yang Mendapat Paling Banyak Undi Ialah Permainan Tradisional.";
+    }else{
+        return "Kedua-dua Permainan Ini Mendapat Undi Seri.";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,15 +44,16 @@ $jumlah_digital = $data_digital['Jumlah'];
           <h1>SISTEM PENGUNDIAN PERMAINAN KEGEMARAN REMAJA</h1>
         </div>
         <div class="navButtons">
-          <a href="undi.php" class="nav-btn">UNDI</a>
-          <a href="login.php" class="nav-btn">KELUAR</a>
+            <a href="lamanUtama.php" class="nav-btn">LAMAN UTAMA</a>
+            <a href="undi.php" class="nav-btn">UNDI</a>
+            <a href="login.php" class="nav-btn">KELUAR</a>
         </div>
       </nav>
 
       <div class="undi-container">
           <table class="undi">
               <tr>
-                  <th colspan="2">JUMLAH KEPUTUSAN UNDIAN KESELURUHAN (LIVE)</th>
+                  <th colspan="2">KEPUTUSAN UNDIAN KESELURUHAN (LIVE)</th>
               </tr>
               <tr>
                   <td>
@@ -55,6 +67,12 @@ $jumlah_digital = $data_digital['Jumlah'];
                       <img src="https://www.sinarharian.com.my/sinarbestari/uploads/2021/06/1091985.jpg" alt="Permainan Digital">
                       <p style="margin-bottom: 5px;">Jumlah Terkumpul:</p>
                       <div class="jumlah-undi"><?php echo $jumlah_digital; ?> Undian</div>
+                  </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                    <!--Memaparkan Keputusan Pengundian-->
+                    <p class="umum-pemenang"><?php echo keputusan($jumlah_digital,$jumlah_tradisional); ?></p>
                   </td>
               </tr>
           </table>

@@ -20,6 +20,17 @@ $hasil_digital = mysqli_query($sambungan, $arahan_sql_digital);
 $data_digital = mysqli_fetch_assoc($hasil_digital);
 $jumlah_digital = $data_digital['Jumlah'];
 
+// ---- Bahagian 3: Fungsi Memaparkan Keputusan ----
+function keputusan($jumlah_digital,$jumlah_tradisional){
+    if ($jumlah_digital>$jumlah_tradisional){
+        return "Permainan Yang Mendapat Paling Banyak Undi Ialah Permainan Digital.";
+    }elseif($jumlah_tradisional>$jumlah_digital){
+        return "Permainan Yang Mendapat Paling Banyak Undi Ialah Permainan Tradisional.";
+    }else{
+        return "Kedua-dua Permainan Ini Mendapat Undi Seri.";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -34,11 +45,12 @@ $jumlah_digital = $data_digital['Jumlah'];
           <h1>SISTEM PENGUNDIAN PERMAINAN KEGEMARAN REMAJA</h1>
         </div>
         <div class="navButtons">
-          <a href="import.php" class="nav-btn">IMPORT</a>
-          <a href="laporan.php" class="nav-btn">LAPORAN</a>
-          <a href="keputusanAdmin.php" class="nav-btn">KEPUTUSAN</a>
-          <a href="kemaskini.php" class="nav-btn">KEMASKINI</a>
-          <a href="login.php" class="nav-btn">KELUAR</a>
+            <a href="lamanUtama.php" class="nav-btn">LAMAN UTAMA</a>
+            <a href="laporan.php" class="nav-btn">LAPORAN</a>
+            <a href="keputusanAdmin.php" class="nav-btn">KEPUTUSAN</a>
+            <a href="kemaskini.php" class="nav-btn">KEMASKINI</a>
+            <a href="import.php" class="nav-btn">IMPORT</a>
+            <a href="login.php" class="nav-btn">KELUAR</a>
         </div>
       </nav>
 
@@ -63,7 +75,12 @@ $jumlah_digital = $data_digital['Jumlah'];
                       <div class="jumlah-undi"><?php echo $jumlah_digital; ?> Undian</div>
                   </td>
               </tr>
-              <tr style="text-align:center">Pemenang ialah
+              <tr>
+                <td colspan="2">
+                    <!--Memaparkan Keputusan Pengundian-->
+                    <p class="umum-pemenang"><?php echo keputusan($jumlah_digital,$jumlah_tradisional); ?></p>
+                  </td>
+              </tr>
           </table>
       </div>
 
