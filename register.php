@@ -83,7 +83,7 @@ if(isset($_POST['daftar_akaun'])){
               <td colspan="3">
                 <div class="password-container">
                   <input type="password" id="kata_laluan" name="kata_laluan" placeholder="Kata Laluan" class="user" required>
-                  <span id="togglePassword" class="eye-icon"></span> 
+                  <span id="togglePassword" class="eye-icon"></span>
                 </div>
               </td>
             </tr>
@@ -92,7 +92,7 @@ if(isset($_POST['daftar_akaun'])){
             </tr>
             <tr>
               <td colspan="3" style="text-align: right; padding-right: 50px;">
-                  <input type="submit" name="daftar_akaun" value="Sahkan Pendaftaran" class="btn">
+                  <input type="submit" name="daftar_akaun" value="Sahkan" class="btn">
               </td>
             </tr>
         </table>

@@ -76,6 +76,7 @@
                   <input type="password" id="fpassword" name="fpassword" placeholder="Kata Laluan" class="user" required>
                   <span id="togglePassword" class="eye-icon"></span> 
                 </div>
+              </td>
             </tr>
             <tr>
               <td colspan="3"><a href="register.php" class="register">Daftar Akaun Baharu?</a></td>

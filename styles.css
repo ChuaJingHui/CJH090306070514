@@ -343,42 +343,26 @@ select.user {
     align-items: center;
 }
 
-/* Pastikan input ada ruang di sebelah kanan untuk ikon */
-.password-container .user {
-    padding-right: 40px !important; 
+.password-container .user, .password-container input {
+    padding-right: 40px; 
     margin: 5px 0;
 }
 
-/* 1. Sembunyikan ikon mata bawaan Microsoft Edge */
-input::-ms-reveal,
-input::-ms-clear {
-    display: none !important;
-}
-
-/* 2. Sembunyikan ikon mata/autofill bawaan Chrome & Safari */
-input::-webkit-contacts-auto-fill-button,
-input::-webkit-credentials-auto-fill-button {
-    visibility: hidden !important;
-    pointer-events: none !important;
-    position: absolute !important;
-    right: 0 !important;
-}
-
-/* 3. Pastikan ikon mata anda tidak bertindih dengan teks */
-.password-container .user {
-    padding-right: 45px !important;
-}
-
+/* Gaya ikon mata untuk kata laluan */
 .eye-icon {
-    background-color: white; /* Memberi latar belakang supaya ikon browser di belakang terlindung */
-    z-index: 10;
+    position: absolute;
+    right: 15px; 
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none; 
+    color: #555;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-/* Pastikan tiada background-image lama yang tertinggal */
-.eye-icon svg {
-    display: block;
+.eye-icon:hover {
+    transform: translateY(-50%) scale(1.1);
 }
-
 /* --- Gaya Khas untuk Laman Undian (undi.php) --- */
 .pilihan-container {
     text-align: center;
