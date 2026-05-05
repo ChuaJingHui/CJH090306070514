@@ -37,32 +37,31 @@ if(isset($_POST['daftar_akaun'])){
         <div class="navTop">
           <h1>SISTEM PENGUNDIAN PERMAINAN KEGEMARAN REMAJA</h1>
         </div>
-        <div class="navButtons">
-          <a href="lamanUtama.php" class="nav-btn">LAMAN UTAMA</a>
-          <a href="login.php" class="nav-btn">LOG MASUK</a>
-          <a href="login.php" class="nav-btn">KELUAR</a>
-        </div>
+
       </nav>
 
       <center>
-        <h1>PENDAFTARAN</h1>
+        <h1 style="margin-top:100px;">PENDAFTARAN</h1>
       
       <form onsubmit="return validateIC()" action="register.php" method="POST">
         <table class="register" style="width: 60%; margin: auto;"> 
             <tr>
+              <td style="text-align:right; white-space:nowrap; width:150px;">ID Pengguna:</td>
               <td colspan="3">
-                <input type="text" id="ic" name="no_kad_pengenalan" placeholder="ID Pengguna (No. KP tanpa sengkang)" class="user" required>
+                <input type="text" id="ic" name="no_kad_pengenalan" placeholder="ID Pengguna (No. KP tanpa sengkang)" class="user" >
                   <div id="icTooltip" class="tooltip" style="display:none;">
                       ID Pengguna mesti mengandungi tepat 12 digit (nombor sahaja).
                   </div>
                 </td>
             </tr>
             <tr>
-              <td colspan="3"><input type="text" id="nama_penuh" name="nama_penuh" placeholder="Sila masukkan Nama Penuh" class="user" required></td>
+              <td style="text-align:right; white-space:nowrap; padding-right:10px;">Nama Penuh:</td>
+              <td colspan="3"><input type="text" id="nama_penuh" name="nama_penuh" placeholder="Sila masukkan Nama Penuh" class="user" ></td>
             </tr>
             <tr>
+              <td style="text-align:right; white-space:nowrap; padding-right:10px;">Kelas:</td>
               <td colspan="3">
-                <select name='pilihan_kelas' class="user" required>
+                <select name='pilihan_kelas' class="user">
                 <?php
                     // Mendapatkan senarai kelas dari pangkalan data untuk paparan dropdown
                     $arahan_pilih_kelas = "SELECT * FROM Kelas";
@@ -80,9 +79,10 @@ if(isset($_POST['daftar_akaun'])){
               </td>
             </tr>
             <tr>
+              <td style="text-align:right; white-space:nowrap; padding-right:10px;">Kata Laluan:</td>
               <td colspan="3">
                 <div class="password-container">
-                  <input type="password" id="kata_laluan" name="kata_laluan" placeholder="Kata Laluan" class="user" required>
+                  <input type="password" id="kata_laluan" name="kata_laluan" placeholder="Kata Laluan" class="user">
                   <span id="togglePassword" class="eye-icon"></span>
                 </div>
               </td>
@@ -136,3 +136,4 @@ if(isset($_POST['daftar_akaun'])){
       </footer>
     </body>
 </html>
+

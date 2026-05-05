@@ -335,6 +335,13 @@ select.user {
     box-sizing: border-box;
 }
 
+/* Daftar */
+.register td:first-child {
+    white-space: nowrap;
+    width: 1%; /* Ini memaksa kolum pertama mengecil mengikut saiz teks sahaja */
+    padding-right: 10px;
+}
+
 /* --- Ciri Sembunyi/Lihat Kata Laluan --- */
 .password-container {
     position: relative;

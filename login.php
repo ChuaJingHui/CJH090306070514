@@ -15,7 +15,7 @@
         // 1. Logik khas untuk Log Masuk sebagai Pentadbir (Admin)
         if($id_pengguna === "admin" && $kata_laluan === "123") {
             echo "<script>alert('Anda telah berjaya log masuk sebagai Admin.');</script>";
-            echo "<script>window.location.replace('laporan.php')</script>";
+            echo "<script>window.location.replace('lamanUtamaAdmin.php')</script>";
         }
         else {
             // 2. Melakukan query untuk mengesahkan akaun pengguna biasa (Pengundi)
@@ -31,7 +31,7 @@
                 $_SESSION['ic'] = $id_pengguna;
 
                 echo "<script>alert('Anda telah berjaya log masuk.');</script>";
-                echo "<script>window.location.replace('undi.php')</script>";
+                echo "<script>window.location.replace('lamanUtama.php')</script>";
             }
             else {
                 // Mesej jika Username atau Kata Laluan salah
@@ -53,36 +53,35 @@
         <div class="navTop">
           <h1>SISTEM PENGUNDIAN PERMAINAN KEGEMARAN REMAJA</h1>
         </div>
-        <div class="navButtons">
-          <a href="lamanUtama.php" class="nav-btn">LAMAN UTAMA</a>
-          <a href="register.php" class="nav-btn">DAFTAR</a>
-          <a href="login.php" class="nav-btn">KELUAR</a>
-        </div>
  
       </nav>
 
       <center>
-        <h1>LOG MASUK</h1>
+        <h1 style="margin-top:100px;">LOG MASUK</h1>
       
 
       <form action="login.php" method="POST">
         <table>
+            
             <tr>
-              <td colspan="3"><input type="text" id="ic" name="ic" placeholder="IDPengguna" class="user" required></td>
+              <td style="text-align:left; width:10px;">IDPengguna:</td><td colspan="3"><input type="text" id="ic" name="ic" placeholder="IDPengguna" class="user"></td>
             </tr>
+            
             <tr>
-              <td colspan="3">
+              <td style="text-align:right; width:10px;">Kata Laluan:</td>
+              <td >
                 <div class="password-container">
-                  <input type="password" id="fpassword" name="fpassword" placeholder="Kata Laluan" class="user" required>
+                  <input type="password" id="fpassword" name="fpassword" placeholder="Kata Laluan" class="user">
                   <span id="togglePassword" class="eye-icon"></span> 
                 </div>
               </td>
             </tr>
+            
             <tr>
               <td colspan="3"><a href="register.php" class="register">Daftar Akaun Baharu?</a></td>
             </tr>
             <tr>
-              <td style="text-align: right; padding-right: 50px;"><input type="submit" name="login" value="Sahkan" class="btn"></td>
+              <td colspan="3" style="text-align: center; padding-right: 50px;"><input type="submit" name="login" value="Sahkan" class="btn"></td>
             </tr>
           </table>
       </form>

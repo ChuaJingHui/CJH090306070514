@@ -39,15 +39,14 @@ require "config.php";
         </div>
         <div class="navButtons">
             <a href="lamanUtama.php" class="nav-btn">LAMAN UTAMA</a>
-            <a href="register.php" class="nav-btn">DAFTAR</a>
+            <a href="undi.php" class="nav-btn">UNDI</a>
             <a href="login.php" class="nav-btn">KELUAR</a>
         </div>
  
       </nav>
 
       <center>
-        <h1 style="margin:100px auto; font-size:60px;"> SELAMAT DATANG! </h1>
-        <h2 style="font-size:40px;">Klik Sini Untuk Log Masuk Dalam Sistem Pengundian Permainan Kegemaran Remaja</h2>
+        <h1 style="margin:100px auto; font-size:60px;"> SELAMAT DATANG KE SISTEM PENGUNDIAN PERMAINAN KEGEMARAN REMAJA! </h1>
 
         <div class="btn">
             <a href="login.php" class="btn-login" style="font-size:30px;">LOG MASUK</a>
