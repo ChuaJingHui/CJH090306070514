@@ -1,10 +1,12 @@
-/* Menetapkan ketinggian penuh halaman */
-html {
+/* Menetapkan ketinggian elemen html kepada 100% daripada paparan pelayar */
+html 
+{
     height: 100%;
 }
 
-/* Tetapan gaya teks dan susun atur utama badan halaman */
-body {
+/* Menetapkan fon utama, susun atur flex menegak, dan ketinggian minimum badan halaman */
+body 
+{
     font-family: "Times New Roman", sans-serif;
     display: flex;
     flex-direction: column;
@@ -12,32 +14,64 @@ body {
     margin: 0;
 }
 
-/* Memastikan jenis tulisan seragam untuk butang dan input */
-button, select, input::placeholder {
+/* Menetapkan kedudukan bekas pilihan warna secara terapung di bahagian kanan atas */
+#pilihan-warna 
+{
+    position: fixed;
+    top: 60px; 
+    right: 20px; 
+    display: flex;
+    gap: 8px;
+    border-radius: 8px;
+    margin-top:30px;
+}
+
+/* Menetapkan rupa bentuk kotak warna kecil yang boleh diklik */
+.kotak 
+{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+/* Memberikan kesan pembesaran sedikit apabila tetikus berada di atas kotak warna */
+.kotak:hover 
+{
+    transform: scale(1.1);
+}
+
+/* Menyelaraskan jenis tulisan fon bagi elemen butang, pilihan, dan teks pemegang tempat */
+button, select, input::placeholder 
+{
     font-family: "Times New Roman", sans-serif;
 }
 
-/* --- Bahagian Navigasi (Menu Atas) --- */
-nav {
-    background-color: #81d6f0; /* Warna latar belakang biru cair */
+/* Gaya untuk bar navigasi utama termasuk warna latar dan kesan bayang */
+nav 
+{
+    background-color: #81d6f0; 
     padding: 0.5px;
     width: 100%;              
-    position: sticky; /* Memastikan menu sentiasa kekal di atas apabila diskrol */
+    position: sticky; 
     top: 0;                    
     left: 0;                              
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Kesan bayang-bayang */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     text-align: center;
 }
 
-/* Susun atur teks di dalam navigasi */
-.navTop {
+/* Menyelaraskan kandungan bahagian atas navigasi ke tengah */
+.navTop 
+{
     align-items: center;
     justify-content: space-between;
     width: 100%;               
 }
 
-/* Kotak untuk kumpulan butang navigasi */
-.navButtons {
+/* Bekas untuk butang menu navigasi dengan latar belakang putih dan sempadan hitam */
+.navButtons 
+{
     display: flex;
     text-align: center;
     justify-content: center;
@@ -47,8 +81,9 @@ nav {
     background-color: white;
 }
 
-/* Gaya khusus untuk setiap butang navigasi */
-.nav-btn {
+/* Gaya teks dan ruang dalaman untuk butang pautan navigasi */
+.nav-btn 
+{
     flex: 1;
     text-decoration: none;
     color: black;
@@ -58,20 +93,23 @@ nav {
     display: inline-block;
 }
 
-/* Menambah garisan pembahagi antara butang kecuali yang terakhir */
-.nav-btn:not(:last-child) {
+/* Menambah garisan sempadan di sebelah kanan untuk setiap butang menu kecuali yang terakhir */
+.nav-btn:not(:last-child) 
+{
     border-right: 2px solid black; 
 }
 
-/* Kesan hover apabila tetikus berada di atas butang navigasi */
-.nav-btn:hover {
+/* Kesan perubahan warna dan pergerakan butang menu apabila disentuh tetikus */
+.nav-btn:hover 
+{
     background-color: black;
     color: white;
-    transform: translateY(-2px); /* Kesan butang naik sedikit */
+    transform: translateY(-2px); 
 }
 
-/* --- Gaya Butang Am (General Buttons) --- */
-.btn {
+/* Gaya butang am dengan kesan bayang dan lengkungan sudut */
+.btn 
+{
     color: #0a0e11;
     padding: 0.8rem 1.4rem;
     text-decoration: none;
@@ -84,13 +122,15 @@ nav {
     cursor: pointer;
 }
 
-/* Kesan hover untuk butang am */
-.btn:hover {
+/* Menukarkan warna latar butang am semasa hover */
+.btn:hover 
+{
     background-color: #5580a4;
 }
 
-/* Butang khusus untuk cetakan laporan/keputusan */
-.btn-cetak {
+/* Gaya khusus untuk butang cetak yang berwarna biru */
+.btn-cetak 
+{
     background-color: #008CBA;
     color: white;
     padding: 12px 30px;
@@ -103,25 +143,27 @@ nav {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.btn-cetak:hover {
+/* Kesan warna biru lebih gelap untuk butang cetak semasa hover */
+.btn-cetak:hover 
+{
     background-color: #005f80; 
 }
 
-.umum-pemenang {
-    white-space: nowrap;      /* Halang teks daripada pecah baris */
-    text-align: center;       /* Letak di tengah-tengah */
-    font-weight: bold;        /* Optional: buat teks nampak lebih jelas */
-    padding: 15px 0;          /* Tambah ruang sikit atas dan bawah */
-    display: block;           /* Pastikan ia ambil ruang penuh */
+/* Gaya teks untuk memaparkan keputusan pemenang di tengah baris */
+.umum-pemenang 
+{
+    white-space: nowrap;      
+    text-align: center;       
+    font-weight: bold;        
+    padding: 15px 0;          
+    display: block;           
     width: 100%;
 }
 
-
-
-
-/* Butang untuk menghantar borang (Submit) */
-.btn-submit {
-    background-color: #4CAF50; /* Warna hijau */
+/* Gaya butang hantar berwarna hijau yang lebar penuh */
+.btn-submit 
+{
+    background-color: #4CAF50; 
     color: white;
     padding: 12px 15px;
     border: none;
@@ -132,12 +174,15 @@ nav {
     margin-top: 25px;
 }
 
-.btn-submit:hover {
+/* Warna hijau lebih gelap untuk butang hantar semasa hover */
+.btn-submit:hover 
+{
     background-color: #45a049;
 }
 
-/* Bekas (Container) untuk meletakkan butang di tengah halaman */
-.btn-container {
+/* Bekas untuk menyelaraskan butang ke tengah halaman dengan jarak margin */
+.btn-container 
+{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,9 +191,9 @@ nav {
     width: 100%;
 }
 
-
-/* --- Gaya Am untuk Jadual (Table) --- */
-table {
+/* Gaya asas untuk semua jadual termasuk lebar dan kedudukan tengah */
+table 
+{
     width: 60%;
     margin-bottom: 30px;
     border-radius: 8px;
@@ -156,8 +201,9 @@ table {
     margin: auto;
 }
 
-/* --- Jadual untuk Halaman Kemaskini --- */
-.kemaskini {
+/* Jadual pengurusan kemaskini dengan latar belakang putih dan bayang */
+.kemaskini 
+{
     width: 90%;
     margin: 20px auto;
     border-collapse: collapse;
@@ -165,60 +211,73 @@ table {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Pengepala jadual kemaskini */
-.kemaskini thead {
-    background-color: #124c8b; /* Biru gelap */
+/* Menetapkan warna biru gelap bagi bahagian atas jadual kemaskini */
+.kemaskini thead 
+{
+    background-color: #124c8b; 
     color: white;
 }
 
-/* Sel di dalam jadual kemaskini */
-.kemaskini th, .kemaskini td {
+/* Gaya sel sempadan dan ruang teks dalam jadual kemaskini */
+.kemaskini th, .kemaskini td 
+{
     padding: 12px;
     border: 1px solid #ddd;
     text-align: center;
 }
 
-/* Warna berselang-seli untuk baris jadual (Zebra striping) */
-.kemaskini tbody tr:nth-child(odd) {
+/* Memberikan warna kelabu cerah pada baris ganjil untuk jadual kemaskini */
+.kemaskini tbody tr:nth-child(odd) 
+{
     background-color: #f2f2f2;
 }
 
-/* Kesan hover untuk baris jadual */
-.kemaskini tbody tr:hover {
+/* Warna latar belakang bertukar apabila baris jadual disentuh */
+.kemaskini tbody tr:hover 
+{
     background-color: #d1ecf1;
 }
 
-/* --- Jadual untuk Halaman Laporan --- */
-.laporan {
+/* Gaya jadual laporan dengan susun atur sempadan yang digabungkan */
+.laporan 
+{
     width: 85%;
     margin: 20px auto;
     border-collapse: collapse;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
 }
 
-.laporan th, .laporan td {
+/* Gaya sel jadual laporan */
+.laporan th, .laporan td 
+{
     border: 1px solid #ddd;
     padding: 12px;
     text-align: center;
 }
 
-/* Pengepala laporan dengan warna tema */
-.laporan th {
+/* Pengepala jadual laporan berwarna biru */
+.laporan th 
+{
     background-color: #008CBA; 
     color: white;
     font-size: 1.1em;
 }
 
-.laporan tr:nth-child(even) {
+/* Warna latar biru cair bagi baris genap jadual laporan */
+.laporan tr:nth-child(even) 
+{
     background-color: #e6f7ff; 
 }
 
-.laporan tr:hover {
+/* Warna latar baris laporan bertukar semasa hover */
+.laporan tr:hover 
+{
     background-color: #cceeff; 
 }
 
-/* --- Gaya untuk Jadual Undi & Keputusan --- */
-.undi-container {
+/* Bekas luaran bagi halaman undi dengan warna latar kelabu pudar */
+.undi-container 
+{
     width: 70%;
     margin: 30px auto;
     background-color: #f9f9f9;
@@ -227,14 +286,18 @@ table {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.undi { 
+/* Jadual utama bagi sistem pengundian */
+.undi 
+{ 
     margin: 50px auto 20px auto;
     font-size: 25px; 
     border-collapse: collapse; 
     width: 80%; 
 }
 
-.undi th {
+/* Gaya pengepala jadual undian */
+.undi th 
+{
     background-color: #008CBA;
     color: white;
     padding: 15px;
@@ -242,7 +305,9 @@ table {
     border-radius: 5px 5px 0 0;
 }
 
-.undi td {
+/* Gaya sel bagi pilihan permainan dalam jadual undian */
+.undi td 
+{
     padding: 20px; 
     vertical-align: top;
     width: 50%; 
@@ -251,15 +316,17 @@ table {
     background-color: white;
 }
 
-/* Membuang sempadan untuk baris akhir yang mengandungi butang */
-.undi tr:last-child td {
+/* Membuang sempadan garis bagi baris terakhir jadual undian */
+.undi tr:last-child td 
+{
     border: none !important;
     padding: 20px;
     background-color: transparent;
 }
 
-/* Gaya gambar di dalam jadual undian */
-.undi img { 
+/* Melaraskan saiz dan rupa gambar permainan */
+.undi img 
+{ 
     width: 300px; 
     height: 250px; 
     object-fit: cover; 
@@ -269,23 +336,26 @@ table {
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-/* Teks paparan jumlah keputusan undian */
-.jumlah-undi {
+/* Gaya teks bagi memaparkan nombor jumlah undian */
+.jumlah-undi 
+{
     font-size: 1.8em;
     font-weight: bold;
-    color: #d9534f; /* Merah menyerlah */
+    color: #d9534f; 
     margin-top: 10px;
 }
 
-/* Teks nama permainan */
-.tajuk-permainan {
+/* Gaya teks tajuk bagi setiap permainan */
+.tajuk-permainan 
+{
     font-size: 1.2em;
     font-weight: bold;
     color: #333;
 }
 
-/* --- Borang & Input (Forms) --- */
-.user {
+/* Gaya am bagi medan input dan kotak pilihan */
+.user 
+{
     width: 100%;
     height: 40px;
     padding: 10px;
@@ -295,8 +365,9 @@ table {
     font-size: 16px;
 }
 
-/* Penyesuaian ikon 'dropdown' untuk kotak pilihan (Select) */
-select.user {
+/* Menukarkan ikon asal anak panah pada kotak pilihan dengan imej SVG tersuai */
+select.user 
+{
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -307,8 +378,9 @@ select.user {
     padding-right: 40px; 
 }
 
-/* Gaya khusus untuk borang tambah rekod pengundi */
-.form-tambah {
+/* Gaya kad borang bagi penambahan rekod baharu */
+.form-tambah 
+{
     background-color: #f9f9f9;
     padding: 30px;
     border-radius: 8px;
@@ -318,15 +390,19 @@ select.user {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.form-tambah label {
+/* Gaya bagi teks label di dalam borang tambah */
+.form-tambah label 
+{
     font-weight: bold;
     display: block;
     margin-top: 15px;
 }
 
+/* Gaya input di dalam borang tambah dengan sempadan kelabu cair */
 .form-tambah input[type="text"], 
 .form-tambah input[type="password"], 
-.form-tambah select {
+.form-tambah select 
+{
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -335,28 +411,50 @@ select.user {
     box-sizing: border-box;
 }
 
-/* Daftar */
-.register td:first-child {
+/* Memastikan kolum pertama jadual pendaftaran mengecil mengikut teks */
+.register td:first-child 
+{
     white-space: nowrap;
-    width: 1%; /* Ini memaksa kolum pertama mengecil mengikut saiz teks sahaja */
+    width: 1%; 
     padding-right: 10px;
 }
 
-/* --- Ciri Sembunyi/Lihat Kata Laluan --- */
-.password-container {
+/* Menyembunyikan ikon mata asal bagi input kata laluan di pelayar Edge */
+input::-ms-reveal,
+input::-ms-clear 
+{
+    display: none;
+}
+
+/* Menyembunyikan butang pengisian automatik asal di pelayar berasaskan Chrome/Webkit */
+input::-webkit-contacts-auto-fill-button, 
+input::-webkit-credentials-auto-fill-button 
+{
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
+
+/* Bekas bagi input kata laluan yang membolehkan kedudukan ikon mata diletakkan secara bertindih */
+.password-container 
+{
     position: relative;
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.password-container .user, .password-container input {
+/* Memberi ruang di bahagian kanan input supaya teks tidak ditutup oleh ikon mata */
+.password-container .user, .password-container input 
+{
     padding-right: 40px; 
     margin: 5px 0;
 }
 
-/* Gaya ikon mata untuk kata laluan */
-.eye-icon {
+/* Kedudukan dan gaya ikon mata bagi fungsi lihat kata laluan */
+.eye-icon 
+{
     position: absolute;
     right: 15px; 
     cursor: pointer;
@@ -367,43 +465,55 @@ select.user {
     transform: translateY(-50%);
 }
 
-.eye-icon:hover {
+/* Kesan pembesaran ikon mata apabila disentuh tetikus */
+.eye-icon:hover 
+{
     transform: translateY(-50%) scale(1.1);
 }
-/* --- Gaya Khas untuk Laman Undian (undi.php) --- */
-.pilihan-container {
+
+/* Bekas kandungan pilihan bagi laman undian */
+.pilihan-container 
+{
     text-align: center;
     padding: 10px;
 }
 
-.tajuk-pilihan {
+/* Gaya teks tajuk pilihan bagi permainan yang diundi */
+.tajuk-pilihan 
+{
     font-size: 1.5em;
     font-weight: bold;
     margin-top: 15px;
     color: #008CBA;
 }
 
-.definisi {
+/* Gaya teks penjelasan atau definisi kategori permainan */
+.definisi 
+{
     font-size: 1em;
     color: #555;
     margin: 10px 0 20px 0;
 }
 
-/* Membesarkan butang radio pilihan undian */
-.radio-pilih {
+/* Membesarkan saiz butang radio pilihan supaya mudah diklik */
+.radio-pilih 
+{
     transform: scale(1.5); 
     margin-right: 10px;
     cursor: pointer;
 }
 
-.label-pilih {
+/* Gaya teks label bagi setiap pilihan undian */
+.label-pilih 
+{
     font-size: 1.2em;
     font-weight: bold;
     cursor: pointer;
 }
 
-/* Kotak mesej amaran jika pengundi sudah mengundi */
-.mesej-sudah-undi {
+/* Gaya kotak amaran berwarna merah sekiranya pengguna telah selesai mengundi */
+.mesej-sudah-undi 
+{
     background-color: #f8d7da;
     color: #721c24;
     padding: 30px;
@@ -415,13 +525,16 @@ select.user {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.mesej-sudah-undi h2 {
+/* Menetapkan warna merah terang bagi tajuk mesej amaran */
+.mesej-sudah-undi h2 
+{
     margin-top: 0;
     color: #d9534f;
 }
 
-/* --- Validasi Ralat & Tooltips --- */
-.tooltip {
+/* Gaya teks ralat validasi yang akan muncul di bawah input yang salah */
+.tooltip 
+{
     color: red;
     background-color: rgb(255, 255, 255);
     padding: 5px 8px;
@@ -431,14 +544,16 @@ select.user {
     border-radius: 4px;
 }
 
-/* Kotak berwarna merah jika input tidak sah */
-.invalid {
+/* Kesan sempadan merah bagi medan input yang dikesan tidak sah */
+.invalid 
+{
     border-color: red !important;
     background-color: #ffe6e6;
 }
 
-/* --- Gaya Bahagian Bawah Halaman (Footer) --- */
-footer {
+/* Gaya bagi bahagian bawah halaman termasuk warna biru cair dan saiz teks */
+footer 
+{
     background-color: #81d6f0;
     text-align: center;
     font-size: 25px;
@@ -449,25 +564,16 @@ footer {
     margin-top: auto;
 }
 
-/* --- Format Khas Semasa Mencetak Dokumen (Print Media) --- */
-@media print {
-    /* Menyembunyikan navigasi, butang dan kaki halaman semasa mencetak */
-    nav, footer, .btn-container, .btn-cetak{
-        display: none !important;
-    }
-    .laporan, .undi-container {
-        width: 100%;
-        box-shadow: none;
-    }
-    .laporan th, .undi th {
-        background-color: #cccccc !important; /* Tukar ke warna kelabu untuk jimat dakwat */
-        color: black !important;
-    }
-    th, td {
-        border: 1px solid black;
-        padding: 8px;
-    }
-    body {
-        text-align: center;
-    }
+
+
+/* Gaya rupa bentuk gambar permainan pada paparan laman utama */
+.lamanUtama img 
+{ 
+    width: 300px; 
+    height: 250px; 
+    object-fit: cover; 
+    display: block; 
+    margin: 10px auto; 
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
