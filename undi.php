@@ -19,20 +19,22 @@ if (!isset($_SESSION['IDPengguna'])) {
 if (isset($_SESSION['IDPengguna']) && $_SESSION['logMasuk'] == true) {
 ?>
 <?php
-    
-    // Memanggil fail konfigurasi sambungan pangkalan data
-    require('config.php');
 
-    // Memeriksa jika sesi pengguna belum wujud untuk menyekat akses tanpa izin
-    if(!isset($_SESSION['ic'])){
-        // Menghantar pengguna kembali ke laman log masuk
-        header("Location:index.php");
-        // Memberhentikan pelaksanaan skrip
+    // 1. Kekalkan kawalan cache anda
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Pragma: no-cache");
+
+    // 2. Semakan Sesi yang selaras
+    if (!isset($_SESSION['logMasuk']) || $_SESSION['logMasuk'] !== true) {
+        header("Location: index.php");
         exit();
     }
 
-    // Menyimpan nombor kad pengenalan pengguna daripada sesi ke dalam pembolehubah
-    $no_kp = $_SESSION['ic'];
+    // 3. Panggil config
+    require('config.php');
+
+    // 4. GUNAKAN 'IDPengguna', bukan 'ic'
+    $no_kp = $_SESSION['IDPengguna'];
 
     // Melaksanakan arahan SQL untuk menyemak sama ada pengguna sudah mengundi
     $semakan_rekod = mysqli_query($sambungan, "SELECT * FROM maklumat_pengundian WHERE IDPengguna='$no_kp'");

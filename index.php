@@ -4,13 +4,14 @@
     
     //Menyemak sama ada pengguna berada dalam session serta pemboleh ubah session diumpukkan
     //Jika tidak,halaman tidak akan dipaparkan
-    if(isset($_SESSION['IDPengguna']) && $_SESSION['logMasuk'] == true){
-        if ($_SESSION['admin'] == true) {
-          print('<script>window.location = "lamanUtamaAdmin.php"</script>');
-        } else {
-          print('<script>window.location = "undi.php"</script>');
-        }
+    if(isset($_SESSION['IDPengguna']) && isset($_SESSION['logMasuk']) && $_SESSION['logMasuk'] == true){
+    // Check if admin is set AND true
+    if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+        print('<script>window.location = "lamanUtamaAdmin.php"</script>');
+    } else {
+        print('<script>window.location = "undi.php"</script>');
     }
+}
     // Memanggil fail konfigurasi sambungan pangkalan data
     require('config.php'); 
 
@@ -24,7 +25,8 @@
 
         // Logik semakan khusus untuk akaun log masuk pentadbir
         if($id_pengguna === "123456789012" && $kata_laluan === "123") {
-        $_SESSION['admin']=true;
+          $_SESSION['admin']=true;
+          $_SESSION['logMasuk']=true;
             // Memaparkan makluman berjaya log masuk sebagai pentadbir
             echo "<script>alert('Anda telah berjaya log masuk sebagai Admin.');</script>";
             // Menghantar pentadbir ke halaman utama pengurusan admin

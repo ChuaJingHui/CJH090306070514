@@ -1,3 +1,22 @@
+<?php
+// Memulakan session
+session_start();
+
+// Menghalang cache pelayar supaya butang 'Back' tidak memaparkan maklumat selepas logout
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Tarikh masa lampau
+
+// Redirect ke index.php jika session tidak wujud untuk mengelakkan loop'; n1
+if (!isset($_SESSION['admin'])) {
+    print('<script>window.location = "index.php"</script>');
+    exit();
+}
+
+// Memastikan admin telah log masuk dengan betul
+if (isset($_SESSION['admin']) && $_SESSION['logMasuk'] == true) {
+?>
 <!-- Mengisytiharkan standard dokumen sebagai HTML5 -->
 <!DOCTYPE html>
 <html> 
@@ -42,7 +61,7 @@
                     <table style="width:fit-content;"> 
                         <tr> 
                             <!-- Ruangan input untuk memilih fail CSV yang ingin diimport -->
-                            <td>Import File Di Sini>>><input style="font-size:18;" type='file' name='DataKelas' required></td> 
+                            <td>Import File Di Sini>>><input style="font-size:18;" type='file' name='DataKelas'></td> 
                         </tr> 
                         <tr> 
                             <!-- Butang untuk menghantar borang bagi memulakan proses import -->
@@ -99,3 +118,13 @@
     </body> 
     
 </html>
+<?php
+} else {
+    // Jika cubaan akses tanpa session atau selepas logout
+    echo "<script>
+        alert('Sila log masuk semula untuk meneruskan.');
+        window.location.replace('index.php');
+    </script>";
+    exit();
+}
+?>
