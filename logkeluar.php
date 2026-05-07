@@ -1,13 +1,22 @@
 <?php
-    //Meneruskan session sebelumnya
-    session_start();
+session_start();
 
-    //Menghapuskan Nilai Terkandung dalam Pemboleh Ubah session
-    session_unset();
+// Buang semua pembolehubah session
+$_SESSION = array();
 
-    //Menghapuskan session
-    session_destroy();
+// Musnahkan session pada pelayan
+session_destroy();
 
-    //Memaparkan halaman Log Masuk
-    echo"<script>window.location.replace('login.php');</script>";
+// Hapus kuki session jika ada
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+// Redirect ke login dengan mesej
+echo "<script>alert('Anda telah berjaya log keluar.'); window.location.replace('index.php');</script>";
+exit();
 ?>

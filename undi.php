@@ -1,6 +1,24 @@
+
 <?php
-    // Memulakan pengurusan sesi pengguna untuk mengenal pasti identiti
-    session_start();
+// Memulakan session
+session_start();
+
+// Menghalang cache pelayar supaya butang 'Back' tidak memaparkan maklumat selepas logout
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Tarikh masa lampau
+
+// Redirect ke index.php jika session tidak wujud untuk mengelakkan loop'; n1
+if (!isset($_SESSION['IDPengguna'])) {
+    print('<script>window.location = "index.php"</script>');
+    exit();
+}
+
+// Memastikan pengguna telah log masuk dengan betul
+if (isset($_SESSION['IDPengguna']) && $_SESSION['logMasuk'] == true) {
+?>
+<?php
     
     // Memanggil fail konfigurasi sambungan pangkalan data
     require('config.php');
@@ -8,7 +26,7 @@
     // Memeriksa jika sesi pengguna belum wujud untuk menyekat akses tanpa izin
     if(!isset($_SESSION['ic'])){
         // Menghantar pengguna kembali ke laman log masuk
-        header("Location:login.php");
+        header("Location:index.php");
         // Memberhentikan pelaksanaan skrip
         exit();
     }
@@ -77,7 +95,7 @@
             <!-- Pautan navigasi untuk melihat keputusan undian semasa -->
             <a href="keputusan.php" class="nav-btn">KEPUTUSAN</a>
             <!-- Pautan navigasi untuk keluar dari sistem -->
-            <a href="lamanUtama.php" class="nav-btn">KELUAR</a>
+            <a href="logkeluar.php" class="nav-btn">KELUAR</a>
         </div>
       </nav>
 
@@ -160,3 +178,13 @@
       </footer>
     </body>
 </html>
+<?php
+} else {
+    // Jika cubaan akses tanpa session atau selepas logout
+    echo "<script>
+        alert('Sila log masuk semula untuk meneruskan.');
+        window.location.replace('index.php');
+    </script>";
+    exit();
+}
+?>

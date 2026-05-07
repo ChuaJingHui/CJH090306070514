@@ -66,7 +66,7 @@ function keputusan($jumlah_digital,$jumlah_tradisional){
                 <!-- Pautan navigasi ke halaman pengundian -->
                 <a href="undi.php" class="nav-btn">UNDI</a> 
                 <!-- Pautan untuk log keluar dari sistem -->
-                <a href="lamanUtama.php" class="nav-btn">KELUAR</a> 
+                <a href="logkeluar.php" class="nav-btn">KELUAR</a> 
             </div> 
         </nav> 
         

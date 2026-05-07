@@ -23,7 +23,7 @@ if(isset($_POST['daftar_akaun'])){
     if($tambah_pengguna && $tambah_pengundi) {
         // Memaparkan mesej berjaya dan menghalakan pengguna ke halaman log masuk
         echo "<script>alert('Pendaftaran berjaya! Anda boleh gunakan ID Pengguna sebagai nama untuk mengundi.');
-              window.location='login.php';</script>";
+              window.location='index.php';</script>";
     } else {
         // Memaparkan mesej ralat sekiranya ID Pengguna telah wujud dalam sistem
         echo "<script>alert('Pendaftaran akaun baharu gagal! ID Pengguna yang dimasukkan telah wujud.');
@@ -116,7 +116,7 @@ if(isset($_POST['daftar_akaun'])){
             </tr>
             <tr>
               <!-- Pautan navigasi untuk pengguna yang sudah mempunyai akaun -->
-              <td colspan="3" style="text-align: center;"><a href="login.php" class="register">Sudah mempunyai akaun? Log masuk di sini.</a></td> 
+              <td colspan="3" style="text-align: center;"><a href="index.php" class="register">Sudah mempunyai akaun? Log masuk di sini.</a></td> 
             </tr>
             <tr>
               <td colspan="3" style="text-align: right; padding-right: 50px;">

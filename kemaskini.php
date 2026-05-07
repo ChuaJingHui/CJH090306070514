@@ -40,7 +40,7 @@ $hasil_carian = mysqli_query($sambungan, $arahan_sql);
                 <!-- Pautan navigasi ke bahagian Import data luar -->
                 <a href="import.php" class="nav-btn">IMPORT</a> 
                 <!-- Pautan navigasi untuk Keluar daripada sistem -->
-                <a href="login.php" class="nav-btn">KELUAR</a> 
+                <a href="logkeluar.php" class="nav-btn">KELUAR</a> 
             </div> 
         </nav> 
         

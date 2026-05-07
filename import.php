@@ -27,7 +27,7 @@
                 <!-- Pautan navigasi ke halaman Import -->
                 <a href="import.php" class="nav-btn">IMPORT</a> 
                 <!-- Pautan untuk Log Keluar dari sistem -->
-                <a href="login.php" class="nav-btn">KELUAR</a> 
+                <a href="logkeluar.php" class="nav-btn">KELUAR</a> 
             </div> 
             
         </nav> 

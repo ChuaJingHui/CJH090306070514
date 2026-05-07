@@ -26,7 +26,7 @@
             <!-- Pautan navigasi ke halaman Import data luar -->
             <a href="import.php" class="nav-btn">IMPORT</a>
             <!-- Pautan untuk log keluar daripada sistem -->
-            <a href="login.php" class="nav-btn">KELUAR</a>
+            <a href="logkeluar.php" class="nav-btn">KELUAR</a>
 
         </div>
     </nav>
