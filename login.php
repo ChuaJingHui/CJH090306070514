@@ -2,21 +2,11 @@
     // Memulakan pengurusan sesi pengguna untuk penyimpanan data sementara
     session_start();
     
-    //Menyemak sama ada pengguna berada dalam session serta pemboleh ubah session diumpukkan
-    //Jika tidak,halaman tidak akan dipaparkan
-    if(isset($_SESSION['IDPengguna']) && isset($_SESSION['logMasuk']) && $_SESSION['logMasuk'] == true){
-    // Check if admin is set AND true
-    if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
-        print('<script>window.location = "lamanUtamaAdmin.php"</script>');
-    } else {
-        print('<script>window.location = "undi.php"</script>');
-    }
-}
     // Memanggil fail konfigurasi sambungan pangkalan data
     require('config.php'); 
 
-    // Menyemak tindakan klik pengguna pada butang log masuk
-    if(isset($_POST['logmasuk'])){
+    // Menyemak tindakan klik pengguna pada butang login
+    if(isset($_POST['login'])){
 
         // Mengambil input ID Pengguna daripada borang POST
         $id_pengguna = $_POST['ic'];
@@ -25,8 +15,6 @@
 
         // Logik semakan khusus untuk akaun log masuk pentadbir
         if($id_pengguna === "123456789012" && $kata_laluan === "123") {
-          $_SESSION['admin']=true;
-          $_SESSION['logMasuk']=true;
             // Memaparkan makluman berjaya log masuk sebagai pentadbir
             echo "<script>alert('Anda telah berjaya log masuk sebagai Admin.');</script>";
             // Menghantar pentadbir ke halaman utama pengurusan admin
@@ -35,14 +23,14 @@
         else {
             // Melaksanakan carian akaun pengguna dalam pangkalan data
             $rekod = mysqli_query($sambungan, "SELECT * FROM pengguna WHERE IDPengguna='$id_pengguna' AND KataLaluan='$kata_laluan'");
+
             // Mendapatkan jumlah rekod yang ditemui daripada hasil carian
             $hasilCarian = mysqli_num_rows($rekod);
 
             // Menyemak jika rekod pengguna wujud dalam pangkalan data
             if($hasilCarian > 0){ 
                 // Menyimpan ID pengguna ke dalam pembolehubah sesi
-                $_SESSION['IDPengguna'] = $id_pengguna;
-                $_SESSION['logMasuk']=true;
+                $_SESSION['ic'] = $id_pengguna;
 
                 // Memaparkan makluman berjaya log masuk bagi pengguna biasa
                 echo "<script>alert('Anda telah berjaya log masuk.');</script>";
@@ -52,7 +40,7 @@
             else {
                 // Memaparkan makluman ralat sekiranya kredential tidak sepadan
                 echo "<script>alert('Harap Maaf. ID Pengguna atau Kata Laluan anda salah.');
-                window.location.replace('index.php');</script>";
+                window.location.replace('login.php');</script>";
             }
         }
     }
@@ -66,7 +54,7 @@
         <!-- Menghubungkan fail CSS luaran untuk gaya reka bentuk laman -->
         <link rel="stylesheet" href="styles.css">
     </head>
-    <body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
+    <body>
       <nav class="nav">
         <div class="navTop">
           <!-- Tajuk utama sistem yang dipaparkan pada bahagian atas navigasi -->
@@ -101,7 +89,7 @@
         <h1 style="margin-top:100px;">LOG MASUK</h1>
       
 
-      <form action="index.php" method="POST">
+      <form action="login.php" method="POST">
         <table>
             
             <tr>
@@ -131,7 +119,7 @@
             </tr>
             <tr>
               <!-- Butang untuk menghantar borang bagi tujuan pengesahan log masuk -->
-              <td colspan="3" style="text-align: center; padding-right: 50px;"><input type="submit" name="logmasuk" value="Sahkan" class="btn"></td>
+              <td colspan="3" style="text-align: center; padding-right: 50px;"><input type="submit" name="login" value="Sahkan" class="btn"></td>
             </tr>
           </table>
       </form>
@@ -143,19 +131,10 @@
         const passwordInput = document.getElementById('fpassword');
 
         // Mendefinisikan kod SVG bagi ikon mata terbuka
-        const eyeOpen = `<svg xmlns="http://www.w3.org/2000/svg" 
-        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" 
-        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-        <circle cx="12" cy="12" r="3"></circle></svg>`;
+        const eyeOpen = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`;
 
         // Mendefinisikan kod SVG bagi ikon mata tertutup (disilang)
-        const eyeClosed = `<svg xmlns="http://www.w3.org/2000/svg" 
-        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" 
-        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 
-        4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
-        </path><line x1="1" y1="1" x2="23" y2="23"></line></svg>`;
+        const eyeClosed = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>`;
 
         // Menetapkan ikon mata tertutup sebagai paparan asal
         togglePassword.innerHTML = eyeClosed;

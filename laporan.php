@@ -25,11 +25,11 @@ require "config.php";
 // Menghasilkan arahan gabungan pelbagai jadual (JOIN) bagi memaparkan maklumat lengkap 
 // Menyediakan arahan SQL JOIN untuk mengambil maklumat pengundian yang lengkap dari pelbagai jadual
 $arahan_sql = "SELECT pengundi.IDPengguna, pengundi.Nama, senarai_permainan.Permainan, kelas.Kelas, maklumat_pengundian.Tarikh
-        FROM maklumat_pengundian
-        INNER JOIN pengundi ON maklumat_pengundian.IDPengguna = pengundi.IDPengguna
-        INNER JOIN senarai_permainan ON maklumat_pengundian.IDPermainan = senarai_permainan.IDPermainan
-        INNER JOIN kelas ON pengundi.IDKelas = kelas.IDKelas 
-        ORDER BY maklumat_pengundian.Tarikh DESC";
+               FROM maklumat_pengundian
+               INNER JOIN pengundi ON maklumat_pengundian.IDPengguna = pengundi.IDPengguna
+               INNER JOIN senarai_permainan ON maklumat_pengundian.IDPermainan = senarai_permainan.IDPermainan
+               INNER JOIN kelas ON pengundi.IDKelas = kelas.IDKelas 
+               ORDER BY maklumat_pengundian.Tarikh DESC";
 
 // Melaksanakan arahan SQL menggunakan pembolehubah sambungan yang telah ditetapkan
 $hasil_carian = mysqli_query($sambungan, $arahan_sql); 
