@@ -61,7 +61,7 @@ if (isset($_SESSION['admin']) && $_SESSION['logMasuk'] == true) {
                     <table style="width:fit-content;"> 
                         <tr> 
                             <!-- Ruangan input untuk memilih fail CSV yang ingin diimport -->
-                            <td>Import File Di Sini>>><input style="font-size:18;" type='file' name='DataKelas'></td> 
+                            <td>Import Fail Di Sini>>><input style="font-size:18;" type='file' name='DataKelas'></td> 
                         </tr> 
                         <tr> 
                             <!-- Butang untuk menghantar borang bagi memulakan proses import -->
@@ -77,43 +77,62 @@ if (isset($_SESSION['admin']) && $_SESSION['logMasuk'] == true) {
         <span>Disediakan oleh Chua Jing Hui</span> 
     </footer> 
             
-    <?php 
-        // Memanggil fail konfigurasi sambungan pangkalan data
-        require "config.php"; 
+<?php
+    require "config.php";
 
-        // Menyemak sama ada butang import telah ditekan melalui borang POST
-        if(isset($_POST['import'])){ 
-            // Memastikan fail telah dipilih sebelum memulakan pemprosesan
-            if($_FILES['DataKelas']['name']){ 
-                // Mengasingkan nama fail dan ekstensi untuk semakan format
-                $arrFilename=explode('.',$_FILES['DataKelas']['name']); 
+    if(isset($_POST['import'])){
+        if($_FILES['DataKelas']['name']){
+            $arrFilename = explode('.', $_FILES['DataKelas']['name']);
 
-                // Menjalankan proses hanya jika fail yang dimuat naik berformat CSV
-                if($arrFilename[1]=="csv"){ 
-                    // Membuka fail sementara dalam mod baca (read-only)
-                    $handle=fopen($_FILES['DataKelas']['tmp_name'],"r"); 
+            if(end($arrFilename) == "csv"){
+                $handle = fopen($_FILES['DataKelas']['tmp_name'], "r");
+               
+                $bilangan_berjaya = 0;
+                $senarai_duplikasi = []; // Array untuk simpan ID yang bertindih
 
-                    // Membaca kandungan fail CSV baris demi baris menggunakan gelung
-                    while(($data=fgetcsv($handle,1000,","))!==FALSE){ 
-                        // Menapis data item pertama untuk tujuan keselamatan SQL
-                        $item1=mysqli_real_escape_string($sambungan,$data[0]); 
-                        // Menapis data item kedua untuk tujuan keselamatan SQL
-                        $item2=mysqli_real_escape_string($sambungan,$data[1]); 
-                        // Menyediakan arahan SQL INSERT untuk memasukkan data kelas
-                        $import="INSERT INTO `kelas`(`IDkelas`,`kelas`) VALUES('$item1','$item2')"; 
-                        // Melaksanakan arahan SQL ke atas pangkalan data
-                        mysqli_query($sambungan,$import); 
-                    } 
+                while(($data = fgetcsv($handle, 1000, ",")) !== FALSE){
+                    $item1 = mysqli_real_escape_string($sambungan, $data[0]);
+                    $item2 = mysqli_real_escape_string($sambungan, $data[1]);
+                   
+                    if(!empty($item1)){
+                        // 1. Semak dahulu jika ID sudah wujud dalam pangkalan data
+                        $semak = mysqli_query($sambungan, "SELECT IDkelas FROM kelas WHERE IDkelas = '$item1'");
+                       
+                        if(mysqli_num_rows($semak) > 0){
+                            // Jika wujud, masukkan ke dalam array duplikasi
+                            $senarai_duplikasi[] = $item1;
+                        } else {
+                            // Jika tiada, baru buat INSERT
+                            $import = "INSERT INTO `kelas`(`IDkelas`,`kelas`) VALUES('$item1','$item2')";
+                            if(mysqli_query($sambungan, $import)){
+                                $bilangan_berjaya++;
+                            }
+                        }
+                    }
+                }
+                fclose($handle);
 
-                    // Menutup fail CSV setelah selesai proses pembacaan
-                    fclose($handle); 
-                    // Memaparkan mesej maklum balas berjaya dan menghalakan semula ke laman import
-                    echo "<script>window.alert('Data kelas berjaya diimport.'); 
-                    window.location.href='import.php';</script>"; 
-                } 
-            } 
-        } 
-    ?> 
+                // Menyediakan mesej untuk JavaScript
+                $mesej = "Proses import berjaya.\\n";
+                $mesej .= "Rekod Berjaya: $bilangan_berjaya\\n";
+
+                // Jika ada duplikasi, tambahkan senarai ID ke dalam mesej
+                if(count($senarai_duplikasi) > 0){
+                    $mesej .= "\\nData Duplikasi Dikesan (Tidak diimport):\\n";
+                    $mesej .= implode(", ", $senarai_duplikasi);
+                }
+
+                if($bilangan_berjaya == 0 && count($senarai_duplikasi) == 0){
+                    echo "<script>window.alert('Gagal! Fail CSV tiada rekod.');
+                    window.location.href='import.php';</script>";
+                } else {
+                    echo "<script>window.alert('$mesej');
+                    window.location.href='import.php';</script>";
+                }
+            }
+        }
+    }
+?>
     
     </body> 
     
